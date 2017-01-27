@@ -1,0 +1,29 @@
+{
+  "name": "orgsoft",
+  "version": "1.0.0",
+  "description": "HR Software for Businesses",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/cjdellomes/OrgSoft.git"
+  },
+  "author": {
+    "name": "Chris Dellomes",
+    "email": "cjdellomes@gmail.com",
+    "url": "https://github.com/cjdellomes"
+  },
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/cjdellomes/OrgSoft/issues"
+  },
+  "homepage": "https://github.com/cjdellomes/OrgSoft#readme",
+  "dependencies": {
+    "bootstrap": "^3.3.7",
+    "express": "^4.14.0",
+    "jquery": "^3.1.1",
+    "nunjucks": "^3.0.0"
+  }
+}
