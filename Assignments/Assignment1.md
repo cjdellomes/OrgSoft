@@ -33,9 +33,13 @@ Good requirements are clear, unambiguous, consistent, prioritized, and verifiabl
 ##4.3
 
 Business Requirements: None
+
 User Requirements: A, B, C, D, E, L, N
+
 Functional Requirements: A, B, C, D, E, F, I, J, K, L, M, N, O, P
+
 Nonfunctional Requirements: G, H
+
 Implementation Requirements: None
 
 There are no requiremnets under the business nor implementation category because no requirement specifies business initiatives nor implementation issues.
@@ -43,6 +47,9 @@ There are no requiremnets under the business nor implementation category because
 ##4.9
 
 Must: Indicate what the word was at the end of the game
+
 Should: Have frontend in line with modern design principles, Work in portrait and landscape phone orientation
+
 Could: Keep track of wins and losses
+
 Wont:
