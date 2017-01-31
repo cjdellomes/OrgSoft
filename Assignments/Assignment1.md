@@ -18,7 +18,7 @@ The critical path is the path START =>H => I => D => E => M => Q. Based on the c
 
 ##3.4
 
-![gantt][folder]
+![alt text](https://github.com/cjdellomes/OrgSoft/blob/master/Assignments/Gantt.png)
 
 ##3.6
 
