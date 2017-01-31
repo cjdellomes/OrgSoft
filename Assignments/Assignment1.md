@@ -18,6 +18,8 @@ The critical path is the path START =>H => I => D => E => M => Q. Based on the c
 
 ##3.4
 
+![gantt][folder]
+
 ##3.6
 
 Unpredictable problems, such as sick leave, can be handled by accounting for them in the estimated time for projects to be completed. For example, if a project is initially estimated to be finished in 15 days, a readjustment to the estimate taking into consideration unforeseeable issues could extend the estimate to approximately 20 days. Another way to handle unpredictable problems is to periodically check the progress of the project to ensure it is on schedule or to readjust the estimated time of completion.
@@ -51,5 +53,3 @@ Must: Indicate what the word was at the end of the game
 Should: Have frontend in line with modern design principles, Work in portrait and landscape phone orientation
 
 Could: Keep track of wins and losses
-
-Wont:
