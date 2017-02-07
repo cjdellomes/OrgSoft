@@ -1,7 +1,7 @@
 ## 5.0	Requirements Specification
 
 ## 5.1	Introduction
-This Software Requirements Specification (SRS) documents the requirements for the OrgSoft Human Resources Web Application (referred to as “OrgSoft” or “OrgSoft Database Web App” or “OrgSoft Web App” for the purposes of this document).
+This Software Requirements Specification (SRS) documents the requirements for the OrgSoft Human Resources Web Application (referred to as “OrgSoft” or “OrgSoft Web App” for the purposes of this document).
 
 The OrgSoft Web App will be a cloud based application that will allow companies to register with the system to allow for their employees to track and record human resources related information. The system will comprise of a common employee section, which will allow each employee to maintain data such as hours worked specific to them, as well as an HR admin section, which will feature more extensive data access such as employment status. The OrgSoft system architecture shall be comprised of a client-side, browser-based interface (frontend), a cloud-hosted server (backend), and a relational database that will for storing and querying data. The frontend will consist of various web-pages that will allow users to easily input, request, and query information stored in the database. The server backend and database will be configured to optimize concurrent access as well as comply with HIPAA security rules to protect confidential client information.
 
@@ -67,68 +67,89 @@ The OrgSoft Web App will allow users to input human resources information that w
 	- 5.3.1.1		The Frontend shall display an initial company registration page
 	- 5.3.1.2		The Frontend shall display an initial employee registration page
 	- 5.3.1.3		The Frontend shall display an initial employee login page
-	- 5.3.1.4		The Frontend shall provide instructions for how to use the login page.
-	- 5.3.1.5		The Frontend shall provide text entry fields into which the user may type values.
-	- 5.3.1.6		The Frontend shall provide error checking on the text entry fields such that the user is provided immediate feedback in case of erroneous entry.
-	- 5.3.1.7		The Frontend shall direct users with different levels of access to different main pages.
-	- 5.3.1.8		The Frontend shall include a navigation bar at the top of the page.
-	- 5.3.1.9		The Frontend shall have menus for navigating between pages and content.
-	- 5.3.1.10		The Frontend shall have search bars for searching through large tables of information.
-	- 5.3.1.11		The Frontend shall have tables displaying information in rows and columns.
-	- 5.3.1.12		The Frontend shall react to mouse clicks on displayed buttons.
-	- 5.3.1.13		The Frontend shall display real-time data.
-	- 5.3.1.14		The Frontend shall require users to manually input personal information via text fields.
+	- 5.3.1.4		The Frontend shall provide instructions for how to use the login page
+	- 5.3.1.5		The Frontend shall provide text entry fields into which the user may type values
+	- 5.3.1.6		The Frontend shall provide error checking on the text entry fields such that the user is provided immediate feedback in case of erroneous entry
+	- 5.3.1.7		The Frontend shall direct users with different levels of access to different main pages
+	- 5.3.1.8		The Frontend shall include a navigation bar at the top of the page
+	- 5.3.1.9		The Frontend shall have menus for navigating between pages and content
+	- 5.3.1.10		The Frontend shall have search bars for searching through large tables of information
+	- 5.3.1.11		The Frontend shall have tables displaying information in rows and columns
+	- 5.3.1.12		The Frontend shall react to mouse clicks on displayed buttons
+	- 5.3.1.13		The Frontend shall display real-time data
+	- 5.3.1.14		The Frontend shall require users to manually input personal information via text fields
+	- 5.3.1.15		The Frontend shall have a Timecard page
+		- 5.3.1.15.1	The Timecard page shall have buttons for clocking in and out
+		- 5.3.1.15.2	The Timecard page shall have a table for viewing the current timecard's recorded times
+		- 5.3.1.15.3	The Timecard page shall have a table for viewing previous timecards
+		- 5.3.1.15.4	The Timecard page shall have buttons for editing the current timecard's recorded times
+	- 5.3.1.16		The Frontend shall have an Employee Review page
+		- 5.3.1.16.1	The Employee Review page shall have a table for viewing employee review records
+		- 5.3.1.16.2	The Employee Review page shall link to pages for creating, editing, and deleting review records
+		- 5.3.1.16.3	The Employee Review page shall link to a table for viewing previous review records
+	- 5.3.1.17		The Frontend shall have an Employee Information page
+		- 5.3.1.17.1	The Frontend shall have inputs for editing employee information
+		- 5.3.1.17.2	The Frontend shall have buttons for editing and deleting employee information
+
 
 - 5.3.2	Backend
-	- 5.3.2.1		The Backend shall respond to HTTP requests from the client.
-	- 5.3.2.2		The Backend shall forward the results of queries from the Database to the Frontend.
-	- 5.3.2.3		The Backend shall support concurrent access of the database from multiple users.
-	- 5.3.2.4		The Backend shall timeout the network connection to the database after prolonged idling of 3 minutes at the least.
-	- 5.3.2.5		The Backend shall send error messages with details about connection issues.
-	- 5.3.2.6		The Backend shall close network channels that are not in use.
-	- 5.3.2.7		The Backend shall determine a network channel to not be in use when that channel has not made a request in the previous 3 minutes or longer.
-	- 5.3.2.8		The Backend shall maintain a network log.
-	- 5.3.2.9 		The Backend network log shall track successful HTTP requests.
-	- 5.3.2.10		The Backend network log shall track failed HTTP requests.
-	- 5.3.2.11		The Backend network log shall track server load.
-	- 5.3.2.12		The Backend network log shall track request speed.
-	- 5.3.2.13		The Backend network log shall track requests per second.
-	- 5.3.2.14		The Backend shall send periodic reports on network performance every second at the least.
-	- 5.3.2.15		The Backend shall respond with a 404 error code when a page or route is not found.
-	- 5.3.2.16		The Backend shall respond with a 500 error code when there is an error in the client-side server.
-	- 5.3.2.17		The Backend shall respond with a 200 error code when an HTTP request is successfully made and returned.
+	- 5.3.2.1		The Backend shall respond to HTTP requests from the client
+	- 5.3.2.2		The Backend shall forward the results of queries from the Database to the Frontend
+	- 5.3.2.3		The Backend shall support concurrent access of the database from multiple users
+	- 5.3.2.4		The Backend shall timeout the network connection to the database after prolonged idling of 3 minutes at the least
+	- 5.3.2.5		The Backend shall send error messages with details about connection issues
+	- 5.3.2.6		The Backend shall close network channels that are not in use
+	- 5.3.2.7		The Backend shall determine a network channel to not be in use when that channel has not made a request in the previous 3 minutes or longer
+	- 5.3.2.8		The Backend shall maintain a network log
+	- 5.3.2.9 		The Backend network log shall track successful HTTP requests
+	- 5.3.2.10		The Backend network log shall track failed HTTP requests
+	- 5.3.2.11		The Backend network log shall track server load
+	- 5.3.2.12		The Backend network log shall track request speed
+	- 5.3.2.13		The Backend network log shall track requests per second
+	- 5.3.2.14		The Backend shall send periodic reports on network performance every second at the least
+	- 5.3.2.15		The Backend shall respond with a 404 error code when a page or route is not found
+	- 5.3.2.16		The Backend shall respond with a 500 error code when there is an error in the client-side server
+	- 5.3.2.17		The Backend shall respond with a 200 error code when an HTTP request is successfully made and returned
 	- 5.3.2.18		The Backend shall respond with a 401 error code when an HTTP request is unauthorized to the user
 
 - 5.3.3	Database
-	- 5.3.3.1		The Database shall perform queries on stored data.
-	- 5.3.3.2		The Database shall prevent errors from concurrent data modification.
-	- 5.3.3.3		The Database shall perform basic statistical analysis on queried data.
-	- 5.3.3.4		The Database shall generate aggregate data that can be used for reports.
-	- 5.3.3.5		The Database shall have procedures for backing-up stored data.
+	- 5.3.3.1		The Database shall perform queries on stored data
+	- 5.3.3.2		The Database shall prevent errors from concurrent data modification
+	- 5.3.3.3		The Database shall perform basic statistical analysis on queried data
+	- 5.3.3.4		The Database shall generate aggregate data that can be used for reports
+	- 5.3.3.5		The Database shall have procedures for backing-up stored data
 	- 5.3.3.6		The Database shall be accessible only through an API
 	- 5.3.3.7		The Database shall be HIPAA compliant
 	- 5.3.3.8		The Database shall be hosted by a HIPAA compliant cloud service
 	- 5.3.3.9		The Database shall maintain activity tracking logs according to HIPAA compliance
+	- 5.3.3.10		The Database shall contain a table containing employee account login
+	- 5.3.3.11		The Database shall contain a table containing a list of registered companies
+	- 5.3.3.12		The Database shall contain a table containing employee information
+	- 5.3.3.13		The Database shall contain a table containing employee review information
+	- 5.3.3.14		The Database shall contain a table containing timecard data
 
 - 5.3.4	System-wide
-	- 5.3.4.1		The system shall provide a means for retrieving lost password information.
-	- 5.3.4.2		The system shall provide a means for resetting user passwords.
-	- 5.3.4.3		The system shall provide a means for troubleshooting connection errors.
-	- 5.3.4.4		The system shall provide a means for creating a new client profile.
-	- 5.3.4.5		The system shall provide a means for creating a new user profile.
-	- 5.3.4.6		The system shall provide a means for creating a new program profile.
-	- 5.3.4.5		The system shall provide a means for editing existing client profile information.
-	- 5.3.4.8		The system shall provide a means for editing existing user profile information.
-	- 5.3.4.9		The system shall provide a means for editing existing program profile information.
-	- 5.3.4.6		The system shall provide a means for deleting existing client profile information.
-	- 5.3.4.11		The system shall provide a means for deleting existing user profile information.
-	- 5.3.4.12		The system shall provide a means for deleting existing program profile information.
-	- 5.3.4.13		The system shall incorporate different levels of user access for the database.
-	- 5.3.4.14		The system shall have a means for communicating its current functional status to users.
-	- 5.3.4.23		The system shall provide a means for exporting data.
-	- 5.3.4.24		The system shall provide a means for users to customize settings for the entire system (Frontend, Backend, Database).
-	- 5.3.4.26		The system shall provide a means for storing document files.
-	- 5.3.4.27		The system shall provide a means for storing image files.
+	- 5.3.4.1		The system shall provide a means for retrieving lost password information
+	- 5.3.4.2		The system shall provide a means for resetting user passwords
+	- 5.3.4.3		The system shall provide a means for troubleshooting connection errors
+	- 5.3.4.4		The system shall provide a means for creating a new company record
+	- 5.3.4.5		The system shall provide a means for creating a new employee account
+	- 5.3.4.6		The system shall provide a means for creating a new employee review
+	- 5.3.4.7		The system shall provide a means for creating a new timecard record
+	- 5.3.4.8		The system shall provide a means for editing an existing company record
+	- 5.3.4.9		The system shall provide a means for editing an existing employee account
+	- 5.3.4.10		The system shall provide a means for editing an existing employee review
+	- 5.3.4.11		The system shall provide a means for editing an existing timecard record
+	- 5.3.4.12		The system shall provide a means for deleting an existing company record
+	- 5.3.4.13		The system shall provide a means for deleting an existing employee account
+	- 5.3.4.14		The system shall provide a means for deleting an existing employee review
+	- 5.3.4.15		The system shall provide a means for deleting an existing timecard record
+	- 5.3.4.16		The system shall incorporate different levels of user access for the database
+	- 5.3.4.17		The system shall provide a means for communicating its current functional status to users
+	- 5.3.4.18		The system shall provide a means for exporting data
+	- 5.3.4.19		The system shall provide a means for users to customize settings for the entire system (Frontend, Backend, Database)
+	- 5.3.4.20		The system shall provide a means for storing document files
+	- 5.3.4.21		The system shall provide a means for storing image files
 
 ### 5.4	Performance Requirements
 
@@ -183,7 +204,7 @@ Utilizing pre-built frameworks such as Node.js will expedite development and pro
 | Category | Requirement |
 |---|---|
 | Frontend | I/O server-side environment and API |
-| Server | HIPAA compliant third-party cloud server hosting |
-| Database | HIPAA compliant third-party cloud database hosting |
+| Server | Heroku server hosting |
+| Database | Heroku database hosting |
 
 Due to the services that the OrgSoft Web App will provide, all software for this system should follow HIPAA security protocols. Furthermore, the need to reduce the risk for data loss as well as the need for ubiquitous access to the OrgSoft Web App from any platform requires a third-party cloud hosting service that specializes in secure data storage and maintenance.
