@@ -6,7 +6,7 @@ This Software Requirements Specification (SRS) documents the requirements for th
 The OrgSoft Web App will be a cloud based application that will allow companies to register with the system to allow for their employees to track and record human resources related information. The system will comprise of a common employee section, which will allow each employee to maintain data such as hours worked specific to them, as well as an HR admin section, which will feature more extensive data access such as employment status. The OrgSoft system architecture shall be comprised of a client-side, browser-based interface (frontend), a cloud-hosted server (backend), and a relational database that will for storing and querying data. The frontend will consist of various web-pages that will allow users to easily input, request, and query information stored in the database. The server backend and database will be configured to optimize concurrent access as well as comply with HIPAA security rules to protect confidential client information.
 
 <p align="center">
-	<img src="../resources/spec_01.png" alt="High-Level Diagram of System">
+	<img src="../Resources/spec_01.png" alt="High-Level Diagram of System">
 </p>
 
 ## Outline of Requirements Specifications
