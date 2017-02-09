@@ -1,0 +1,45 @@
+   <!-- Add Activity Modal -->
+   <div class="modal fade" id="newActivityModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel">
+      <div class="modal-dialog" role="document">
+        <div class="modal-content">
+          <div class="modal-header">
+            <button type="button" class="close" data-dismiss="modal" aria-label="Close"><span aria-hidden="true">&times;</span></button>
+            <center>
+            <h4 class="modal-title" id="myModalLabel">Add New Activity</h4>
+            </center>
+          </div>
+          <div class="modal-body">
+            <div class="col-sm-4">
+              <h6 class="text-center">Health & Wellness Programs</h6>
+              <div class="well" style="max-height: 400px;overflow: auto;">
+               <!-- <a href="#" class="list-group-item"><span class="fa fa-plus" aria-hidden="true"></span> New Activity</a> -->
+               <!-- SHOWERS EXAMPLE: add, allow time slot -->
+                <div class="list-group activities-add" data-category="health" id="health-well">
+                </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <h6 class="text-center">Education & Employment</h6>
+              <div class="well" style="max-height: 400px;overflow: auto;">
+                <!-- <a href="#" class="list-group-item"><span class="fa fa-plus" aria-hidden="true"></span> New Activity</a> -->
+              <div class="list-group activities-add" data-category="art" id="art-well">
+              </div>
+              </div>
+            </div>
+            <div class="col-sm-4">
+              <h6 class="text-center">Other</h6>
+              <div class="well" style="max-height: 400px;overflow: auto;">
+                <!-- <a href="#" class="list-group-item"><span class="fa fa-plus" aria-hidden="true"></span> New Activity</a> -->
+                  <div class="list-group activities-add" data-category="other" id="other-well">
+                  </div>
+              </div>
+              <!-- <div id="dropin-feedback"> </div> -->
+            </div> 
+          </div>
+          <div class="modal-footer">
+            <button type="button" class="btn btn-outline-secondary" data-dismiss="modal">Cancel</button>
+            <button type="button" class="btn btn-outline-primary" id="create-thumbnail" data-dismiss="modal">Add</button>
+          </div>
+        </div>
+      </div>
+    </div> <!-- Add Activity Modal -->

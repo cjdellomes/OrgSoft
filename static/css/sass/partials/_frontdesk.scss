@@ -1,0 +1,55 @@
+/*button.badge-button.btn.btn-primary.btn-xs {
+    background-image: none;
+    background-color: $spfy-blue;
+    border-color: $button-border;
+    border: 2;
+    border-radius: 0.5;
+    padding: 10px 40px;
+    color: #ffffff;
+    text-transform: uppercase;
+}
+*/
+span.badge {
+    color: black !important;
+}
+
+.horiscroll {
+	overflow-x: scroll;
+    overflow-y: hidden;
+    white-space:nowrap;
+}
+
+.thumbnail { 
+    box-shadow: 1px 1px 10px #999; 
+    margin: 2px;
+    max-height: 80px;
+    cursor: pointer;
+    display:inline-block;
+    *display:inline;
+    *zoom:1;
+    vertical-align:top;
+}
+
+.health {
+    background-color: $boot-green;
+}
+
+.art {
+    background-color: $boot-orange;
+}
+
+.education {
+    background-color: $boot-red;
+}
+
+.other {
+    background-color: $boot-cyan;
+}
+
+button[name="select-button"] {
+    float: right;
+}
+
+button[name="deselect-client"] {
+    float: right;
+}
