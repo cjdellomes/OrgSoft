@@ -27,12 +27,17 @@ The classes are possible shapes, so they share properties required for drawing, 
 | Property  | Used By |
 | --------- | ------- |
 | color     | All     |
+| postion   | All     |
 | height    | All     |
 | width     | All     |
 | font      | Text    |
+| value     | Text    |
 | thickness | Rectangle, Ellipses, Star, Line |
+| fill color | Rectangle, Ellipses, Star |
 
 ##6.2
+
+![alt text](https://github.com/cjdellomes/OrgSoft/blob/master/Assignments/6.2.png)
 
 ##6.3
 
