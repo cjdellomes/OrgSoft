@@ -18,6 +18,8 @@ The ClassyDraw application could store each drawing as its own seperate file, wh
 
 ##5.8
 
+![alt text](https://github.com/cjdellomes/OrgSoft/blob/master/Assignments/5.8.png)
+
 ##6.1
 
 The classes are possible shapes, so they share properties required for drawing, such as color. Some classes require certain parameters to draw, such as text value, while other classes share extra properties, such as line thickness.
