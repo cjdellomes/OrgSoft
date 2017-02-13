@@ -45,3 +45,4 @@ The classes are possible shapes, so they share properties required for drawing, 
 
 ##6.6
 
+![alt text](https://github.com/cjdellomes/OrgSoft/blob/master/Assignments/6.6.png)
