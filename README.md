@@ -1,21 +1,6 @@
-![Safe Place for Youth Logo](resources/Logo.jpg "Safe Place for Youth Database Project")
-[![Version][version-img]][version-url]
-[![Build Status][build-img]][build-url]
-[![Codecov][codecov-img]][codecov-url]
-[![Dependency Status][dependency-img]][dependency-url]
-[![Dev Dependency Status][dev-dependency-img]][dev-dependency-url]
-[![Known Vulnerabilities][snyk-img]][snyk-url]
+[Read the Project Proposal](Deliverables/project-proposal-document.md)
 
-
-[Read our Project Proposal](docs/Project_Proposal.md)
-
-[Read our Requirements Specification](docs/Requirements_Specification.md)
-
-[Read our Software Development Plan](docs/Software_Development_Plan.md)
-
-[Read our Architecture Design](docs/Architecture_Design_Document.md)
-
-[Read our Detailed Design Specification](docs/Detailed_Design_Specification.md)
+[Read the Requirements Specification](docs/software-requirements-specifications.md)
 
 ### Requirements
 Install `npm` and `postgres` if you don't already have them installed
@@ -27,7 +12,7 @@ brew install postgresql
 ### Installation
 download and install packages
 ```
-git clone https://github.com/SirSeim/SPFY.git
+git clone https://github.com/cjdellomes/OrgSoft.git
 cd SPFY
 npm install
 ```
@@ -50,7 +35,7 @@ The most recent config is from _Oct, 30_.
 
 ### Using Database
 
-Initialize PostgreSQL for SPFY
+Initialize PostgreSQL for OrgSoft
 ```
 npm run db-init
 ```
