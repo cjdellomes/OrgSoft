@@ -1,3 +1,5 @@
+#OrgSoft
+
 [Read the Project Proposal](Deliverables/project-proposal-document.md)
 
 [Read the Requirements Specification](docs/software-requirements-specifications.md)
@@ -13,21 +15,21 @@ brew install postgresql
 download and install packages
 ```
 git clone https://github.com/cjdellomes/OrgSoft.git
-cd SPFY
+cd OrgSoft
 npm install
 ```
 
-configure database with user and database for project by having `config/create_spfy.sql`
+configure database with user and database for project by having `config/create_orgsoft.sql`
 ```
 CREATE USER {user} WITH PASSWORD '{password}';
-CREATE DATABASE {db, default spfy} OWNER {user};
+CREATE DATABASE {db, default orgsoft} OWNER {user};
 ALTER USER {user} WITH SUPERUSER;
-GRANT ALL PRIVILEGES ON DATABASE "{db, default spfy}" to "{user}";
+GRANT ALL PRIVILEGES ON DATABASE "{db, default orgsoft}" to "{user}";
 ```
 
 configure server with database access by having `config/set_env.sh`
 ```
-echo 'postgres://{user}:{password}@{host, default localhost}:{port, default 5432}/{db, default spfy}'
+echo 'postgres://{user}:{password}@{host, default localhost}:{port, default 5432}/{db, default orgsoft}'
 ```
 
 Alternately, get the most recent config folder from Team member/Slack.
@@ -73,23 +75,3 @@ Run Tests
 npm test
 npm run lint
 ```
-
-To view a coverage report, run `npm test`, then `npm run report`, then open up `coverage/lcov-report/index.html` in a webbrowser
-
-[version-img]: https://img.shields.io/badge/version-beta%202-yellow.svg
-[version-url]: https://github.com/SirSeim/SPFY
-
-[build-img]: https://travis-ci.org/SirSeim/SPFY.svg?branch=master
-[build-url]: https://travis-ci.org/SirSeim/SPFY
-
-[codecov-img]: https://codecov.io/gh/SirSeim/SPFY/branch/master/graph/badge.svg
-[codecov-url]: https://codecov.io/gh/SirSeim/SPFY
-
-[dependency-img]: https://david-dm.org/SirSeim/SPFY.svg
-[dependency-url]: https://david-dm.org/SirSeim/SPFY
-
-[dev-dependency-img]: https://david-dm.org/SirSeim/SPFY/dev-status.svg
-[dev-dependency-url]: https://david-dm.org/SirSeim/SPFY?type=dev
-
-[snyk-img]: https://snyk.io/test/github/SirSeim/SPFY.git/badge.svg
-[snyk-url]: https://snyk.io/test/github/SirSeim/SPFY.git

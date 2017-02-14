@@ -639,7 +639,7 @@ var service = {
     },
 
     genToken: function (session, callback) {
-        JWT.sign(session, process.env.SPFY_KEY, jwtOptions, callback);
+        JWT.sign(session, process.env.ORGSOFT_KEY, jwtOptions, callback);
     },
 
     getUsersNotifications: function (postgres, userId, callback) {
