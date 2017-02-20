@@ -84,7 +84,7 @@
 
 */
 
-DROP TABLE IF EXISTS users;
+DROP TABLE IF EXISTS company;
 
 CREATE TABLE company (
   id SERIAL PRIMARY KEY,
@@ -93,6 +93,8 @@ CREATE TABLE company (
 );
 
 INSERT INTO company (name, register_date) VALUES ('OrgSoft', '2017-01-01');
+
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
@@ -104,6 +106,33 @@ CREATE TABLE users (
 
 -- inserting user 'test' to login with password 'passwordisnone'
 INSERT INTO users (company_id, username, hashed_password, is_admin) VALUES (1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', true);
+
+DROP TABLE IF EXISTS timecard;
+
+CREATE TABLE timecard (
+  id SERIAL PRIMARY KEY,
+  start_date date NOT NULL,
+  end_date date NOT NULL,
+  employee_signed boolean NOT NULL,
+  admin_signed boolean NOT NULL
+);
+
+INSERT INTO timecard (start_Date, end_date, employee_signed, admin_signed) VALUES ('2017-01-01', '2017-01-14', true, true);
+
+DROP TABLE IF EXISTS time_record;
+
+CREATE TABLE time_record (
+  id SERIAL PRIMARY KEY,
+  timecard_id integer REFERENCES timecard (id),
+  date date NOT NULL,
+  time time NOT NULL,
+  type varchar(25) NOT NULL
+);
+
+INSERT INTO time_record (timecard_id, date, time, type) VALUES (1, '2017-01-02', '07:30:00', 'In');
+INSERT INTO time_record (timecard_id, date, time, type) VALUES (1, '2017-01-02', '12:00:05', 'Meal Out');
+INSERT INTO time_record (timecard_id, date, time, type) VALUES (1, '2017-01-02', '13:00:00', 'Meal In');
+INSERT INTO time_record (timecard_id, date, time, type) VALUES (1, '2017-01-02', '04:30:00', 'Out');
 
 DROP TABLE IF EXISTS file;
 
