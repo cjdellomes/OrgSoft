@@ -22,7 +22,7 @@ var parseProperty = function(property) {
 var queries = {
 
     getUserList: function () {
-        var queryString = 'SELECT id, username FROM users;';
+        var queryString = 'SELECT id, comapny_id, username, is_admin FROM users;';
 
         return queryString;
     },

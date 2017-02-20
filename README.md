@@ -2,7 +2,7 @@
 
 [Read the Project Proposal](Deliverables/project-proposal-document.md)
 
-[Read the Requirements Specification](Delibarables/software-requirements-specifications.md)
+[Read the Requirements Specification](Deliverables/software-requirements-specifications.md)
 
 ### Requirements
 Install `npm` and `postgres` if you don't already have them installed
