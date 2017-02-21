@@ -5,6 +5,46 @@ var Respond = require(Path.join(__dirname, 'respond.js'));
 // these functions get called from routes/api_routes.js
 var api = {
 
+    createOrganization: function (request, reply) {
+        Service.createOrganization(request.postgres, request.payload, function (err, result) {
+            if (err) {
+                Respond.failedToCreateOrganization(reply, err);
+            } else {
+                Respond.createOrganization(reply, result);
+            }
+        });
+    },
+
+    getOrganization: function (request, reply) {
+        Service.getOrganization(request.postgres, request.params.orgID, function (err, result) {
+            if (err) {
+                Respond.failedToGetOrganization(reply, err);
+            } else {
+                Respond.getOrganization(reply, result);
+            }
+        });
+    },
+
+    getOrganizations: function (request, reply) {
+        Service.getOrganizations(request.postgres, function (err, result) {
+            if (err) {
+                Respond.failedToGetOrganizations(reply, err);
+            } else {
+                Respond.getOrganizations(reply, result);
+            }
+        });
+    },
+
+    editOrganization: function (request, reply) {
+        Service.editOrganization(request.postgres, request.payload, function (err, result) {
+            if (err) {
+                Respond.failedToEditOrganization(reply, err);
+            } else {
+                Respond.editOrganization(reply, result);
+            }
+        });
+    },
+
     getUserList: function (request, reply) {
         if (request.query.username || request.query.id) {
             Service.getUserByQuery(request.postgres, {

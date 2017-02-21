@@ -11,6 +11,42 @@ var jwtOptions = {
 
 var service = {
 
+    createOrganization: function (postgres, payload, callback) {
+        Query.createOrganization(postgres, payload, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    getOrganization: function (postgres, orgID, callback) {
+        Query.getOrganization(postgres, orgID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    getOrganizations: function (postgres, callback) {
+        Query.getOrganizations(postgres, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    editOrganization: function (postgres, payload, callback) {
+        Query.editOrganization(postgres, payload, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     getUserList: function (postgres, callback) {
         Query.getUserList(postgres, function (err, result) {
             if (err) {

@@ -106,40 +106,8 @@ $(function () {
           alertList.empty();
           profile.show();
 
-          $.ajax({
-              xhrFields: {
-                  withCredentials: true
-              },
-              beforeSend: function (xhr) {
-                  xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
-              },
-              url: "/api/users/self/notifications",
-              method: "GET"
-          }).done(function (data, textStatus, xhr) {
-              console.log(data);
-              var local = alert.find('a');
-              local.empty();
-              local.append('Alerts');
-              if (data.result.length) {
-                  local.append(alertsBadge(data.result.length));
-              }
-              alert.children('div.dropdown-menu').empty();
-              for (var i = 0; i < data.result.length; i++) {
-                  alertList.append(newAlertItem(data.result[i]))
-              }
-              alertList.find('input[type="checkbox"]').change(checkboxChange);
-          }).fail(function (xhr, textStatus, errorThrown) {
-              console.log(xhr);
-
-              if (xhr.status === 401) {
-                  localStorage.removeItem("authorization");
-                  login.show();
-                  alert.hide();
-                  profile.hide();
-              }
-          });
       } else {
-          console.log("We not special");
+          console.log("We do not have authorization");
 
           login.show();
           alert.hide();
@@ -161,76 +129,4 @@ $(function () {
           ready: setupNavbar
       });
   }
-// this is a test for getUsersNotificationsById
-  //   $.ajax({
-  //     xhrFields: {
-  //         withCredentials: true
-  //     },
-  //     beforeSend: function (xhr) {
-  //         xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
-  //     },
-  //     url: "/api/users/" + 1 + "/notifications",
-  //     method: "GET"
-  // }).done(function (data, textStatus, xhr) {
-  //     console.log(data);
-  //     var local = alert.find('h5');
-  //     local.empty();
-  //     local.append('Alerts');
-  //     if (data.result.length) {
-  //         local.append(alertsBadge(data.result.length));
-  //     }
-  //     local.append(' <span class="fa fa-sort-down drop-arrow"></span>');
-  //
-  //     for (var i = 0; i < data.result.length; i++) {
-  //         alertList.append(newAlertItem(data.result[i]))
-  //     }
-  // }).fail(function (xhr, textStatus, errorThrown) {
-  //     console.log(xhr);
-  //
-  //     if (xhr.status === 401) {
-  //         localStorage.removeItem("authorization");
-  //         login.show();
-  //         alert.hide();
-  //     }
-  //   });
-
-// this is a test for createUsersNotificationsById
-  //   var data = {
-  //       type: 'general',
-  //       comment: 'Test notification for createUsersNotificationsById',
-  //       link: '/frontdesk',
-  //       checked: false
-  //   }
-  //   $.ajax({
-  //     xhrFields: {
-  //         withCredentials: true
-  //     },
-  //     beforeSend: function (xhr) {
-  //         xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
-  //     },
-  //     url: "/api/users/" + 1 + "/notifications",
-  //     method: "POST",
-  //     data: data,
-  // }).done(function (data, textStatus, xhr) {
-  //     console.log(data);
-  //     var local = alert.find('h5');
-  //     local.empty();
-  //     local.append('Alerts');
-  //     if (data.result.length) {
-  //         local.append(alertsBadge(data.result.length));
-  //     }
-  //     local.append(' <span class="fa fa-sort-down drop-arrow"></span>');
-
-  //     for (var i = 0; i < data.result.length; i++) {
-  //         alertList.append(newAlertItem(data.result[i]))
-  //     }
-  // }).fail(function (xhr, textStatus, errorThrown) {
-  //     console.log(xhr);
-
-  //     if (xhr.status === 401) {
-  //         localStorage.removeItem("authorization");
-  //         login.show();
-  //         alert.hide();
-  //     }
-  //   });
 });

@@ -21,8 +21,34 @@ var parseProperty = function(property) {
 // need to figure out how to "only insert if not exists" implementation
 var queries = {
 
+    createOrganization: function (payload) {
+        var queryString = 'INSERT INTO organization ("name", "register_date") VALUES (\'' +
+                            payload.name + '\', \'' +
+                            payload.registerDate + '\');';
+
+        return queryString;
+    },
+
+    getOrganization: function (orgID) {
+        var queryString = 'SELECT id, name, register_date FROM organization WHERE id = \'' + orgID + '\';';
+
+        return queryString;
+    },
+
+    getOrganizations: function () {
+        var queryString = 'SELECT id, name, register_date FROM organization;';
+
+        return queryString;
+    },
+
+    editOrganizations: function (payload) {
+        var queryString = 'UPDATE organization SET name = \'' + paylaod.name +
+                            '\' register_date = \'' + payload.registerDate +
+                            '\' WHERE id = ' + payload.id + ';';
+    },
+
     getUserList: function () {
-        var queryString = 'SELECT id, comapny_id, username, is_admin FROM users;';
+        var queryString = 'SELECT id, org_id, username, is_admin FROM users;';
 
         return queryString;
     },

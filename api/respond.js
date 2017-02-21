@@ -1,5 +1,61 @@
 var respond = {
     
+    failedToCreateOrganization: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to create organization!",
+            error: err
+        }).code(500);
+    },
+    createOrganization: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully created organization!",
+            result: result
+        }).code(200);
+    },
+    failedToGetOrganization: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get organization!",
+            error: err
+        }).code(500);
+    },
+    getOrganization: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got organization!",
+            result: result
+        }).code(200);
+    },
+    failedToGetOrganizations: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get organizations!",
+            error: err
+        }).code(500);
+    },
+    getOrganizations: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got organizations!",
+            result: result
+        }).code(200);
+    },
+    failedToEditOrganization: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to edit organization!",
+            error: err
+        }).code(500);
+    },
+    editOrganization: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully edited organization!",
+            result: result
+        }).code(200);
+    },
     failedToGetUsers: function (reply, err) {
         reply({
             statusCode: 500,

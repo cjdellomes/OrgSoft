@@ -84,40 +84,44 @@
 
 */
 
-DROP TABLE IF EXISTS company;
+DROP TABLE IF EXISTS organization;
 
-CREATE TABLE company (
+CREATE TABLE organization (
   id SERIAL PRIMARY KEY,
   name varchar(100) NOT NULL,
   register_date date NOT NULL
 );
 
-INSERT INTO company (name, register_date) VALUES ('OrgSoft', '2017-01-01');
+INSERT INTO organization (name, register_date) VALUES ('OrgSoft', '2017-01-01');
 
 DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
-  company_id integer REFERENCES company (id),
+  org_id integer REFERENCES organization (id),
   username varchar(45) NOT NULL,
   hashed_password varchar(70) NOT NULL,
+  first_name varchar(45) NOT NULL,
+  last_name varchar(45) NOT NULL,
+  display_name varchar(90) NOT NULL,
   is_admin boolean NOT NULL
 );
 
 -- inserting user 'test' to login with password 'passwordisnone'
-INSERT INTO users (company_id, username, hashed_password, is_admin) VALUES (1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', true);
+INSERT INTO users (org_id, username, hashed_password, is_admin) VALUES (1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'John', 'Doe', 'John Doe', true);
 
 DROP TABLE IF EXISTS timecard;
 
 CREATE TABLE timecard (
   id SERIAL PRIMARY KEY,
+  user_id integer REFERENCES users (id),
   start_date date NOT NULL,
   end_date date NOT NULL,
   employee_signed boolean NOT NULL,
   admin_signed boolean NOT NULL
 );
 
-INSERT INTO timecard (start_Date, end_date, employee_signed, admin_signed) VALUES ('2017-01-01', '2017-01-14', true, true);
+INSERT INTO timecard (user_id, start_Date, end_date, employee_signed, admin_signed) VALUES (1, '2017-01-01', '2017-01-14', true, true);
 
 DROP TABLE IF EXISTS time_record;
 
