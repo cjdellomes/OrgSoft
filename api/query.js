@@ -3,6 +3,22 @@ var Queries = require(Path.join(__dirname, 'queries.js'));
 
 var query = {
 
+    getOrganizations: function (postgres, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+            client.query(Queries.getOrganizations(), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
     createOrganization: function (postgres, payload, callback) {
         postgres.connect(function (err, client, done) {
             if (err) {
@@ -35,12 +51,12 @@ var query = {
         });
     },
 
-    getOrganizations: function (postgres, callback) {
+    editOrganization: function (postgres, payload, callback) {
         postgres.connect(function (err, client, done) {
             if (err) {
                 return callback(err);
             }
-            client.query(Queries.getOrganizations(), function (err, result) {
+            client.query(Queries.editOrganization(payload), function (err, result) {
                 done();
                 if (err) {
                     return callback(err);
@@ -51,13 +67,12 @@ var query = {
         });
     },
 
-    editOrganization: function (postgres, payload, callback) {
+    deleteOrganization: function (postgres, orgID, callback) {
         postgres.connect(function (err, client, done) {
             if (err) {
                 return callback(err);
             }
-            client.query(Queries.editOrganization(payload), function (err, result) {
-                done();
+            client.query(Queries.deleteOrganization(orgID), function (err, result) {
                 if (err) {
                     return callback(err);
                 }
@@ -176,6 +191,91 @@ var query = {
             }
 
             client.query(Queries.deleteUser(userId), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
+    getTimecards: function (postgres, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.getTimecards(), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
+    createTimecard: function (postgres, payload, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.createTimecard(payload), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
+    getTimecard: function (postgres, cardID, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.getTimecard(cardID), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
+    editTimecard: function (postgres, payload, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.editTimecard(payload), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
+    deleteTimecard: function (postgres, cardID, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.deleteTimecard(cardID), function (err, result) {
                 done();
                 if (err) {
                     return callback(err);

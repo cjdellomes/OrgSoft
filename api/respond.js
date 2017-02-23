@@ -1,5 +1,19 @@
 var respond = {
     
+    failedToGetOrganizations: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get organizations!",
+            error: err
+        }).code(500);
+    },
+    getOrganizations: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got organizations!",
+            result: result
+        }).code(200);
+    },
     failedToCreateOrganization: function (reply, err) {
         reply({
             statusCode: 500,
@@ -28,20 +42,6 @@ var respond = {
             result: result
         }).code(200);
     },
-    failedToGetOrganizations: function (reply, err) {
-        reply({
-            statusCode: 500,
-            message: "Unable to get organizations!",
-            error: err
-        }).code(500);
-    },
-    getOrganizations: function (reply, result) {
-        reply({
-            statusCode: 200,
-            message: "Successfully got organizations!",
-            result: result
-        }).code(200);
-    },
     failedToEditOrganization: function (reply, err) {
         reply({
             statusCode: 500,
@@ -53,6 +53,20 @@ var respond = {
         reply({
             statusCode: 200,
             message: "Successfully edited organization!",
+            result: result
+        }).code(200);
+    },
+    failedToDeleteOrganization: function (reply, result) {
+        reply({
+            statusCode: 500,
+            message: "Unable to delete organization!",
+            error: err
+        }).code(500);
+    },
+    deleteOrganization: function (reply, rsult) {
+        reply({
+            statusCode: 200,
+            message: "Successfully deleted organization!",
             result: result
         }).code(200);
     },
@@ -215,6 +229,76 @@ var respond = {
         reply({
             statusCode: 200,
             message: "Successfully deleted User!",
+            result: result
+        }).code(200);
+    },
+    failedToGetTimecards: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get timecards!",
+            error: err
+        }).code(500);
+    },
+    getTimecards: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got timecards!",
+            result: result
+        }).code(200);
+    },
+    failedToCreateTimecard: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to create timecard!",
+            error: err
+        }).code(500);
+    },
+    createTimecard: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully created timecard!",
+            result: result
+        }).code(200);
+    },
+    failedToGetTimecard: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get timecard!",
+            error: err
+        }).code(500);
+    },
+    getTimecard: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got timecard!",
+            result: result
+        }).code(200);
+    },
+    failedToEditTimecard: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to edit timecard!",
+            error: err
+        }).code(500);
+    },
+    editTimecard: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully edited timecard!",
+            result: result
+        }).code(200);
+    },
+    failedToDeleteTimecard: function (reply, result) {
+        reply({
+            statusCode: 500,
+            message: "Unable to delete timecard!",
+            error: err
+        }).code(500);
+    },
+    deleteTimecard: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully deleted timecard!",
             result: result
         }).code(200);
     },

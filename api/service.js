@@ -11,6 +11,15 @@ var jwtOptions = {
 
 var service = {
 
+    getOrganizations: function (postgres, callback) {
+        Query.getOrganizations(postgres, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     createOrganization: function (postgres, payload, callback) {
         Query.createOrganization(postgres, payload, function (err, result) {
             if (err) {
@@ -29,8 +38,8 @@ var service = {
         });
     },
 
-    getOrganizations: function (postgres, callback) {
-        Query.getOrganizations(postgres, function (err, result) {
+    editOrganization: function (postgres, payload, callback) {
+        Query.editOrganization(postgres, payload, function (err, result) {
             if (err) {
                 return callback(err);
             }
@@ -38,8 +47,8 @@ var service = {
         });
     },
 
-    editOrganization: function (postgres, payload, callback) {
-        Query.editOrganization(postgres, payload, function (err, result) {
+    deleteOrganization: function (postgres, payload, callback) {
+        Query.deleteOrganization(postgres, orgID, function (err, result) {
             if (err) {
                 return callback(err);
             }
@@ -149,6 +158,51 @@ var service = {
 
     deleteUser: function (postgres, userId, callback) {
         Query.deleteUser(postgres, userId, callback);
+    },
+
+    getTimecards: function (postgres, callback) {
+        Query.getTimecards(postgres, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    createTimecard: function (postgres, payload, callback) {
+        Query.createTimecard(postgres, payload, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    getTimecard: function (postgres, cardID, callback) {
+        Query.getTimecard(postgres, cardID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    editTimecard: function (postgres, payload, callback) {
+        Query.editTimecard(postgres, payload, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    deleteTimecard: function (postgres, cardID, callback) {
+        Query.deleteTimecard(postgres, cardID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
     },
 
     uploadFile: function (postgres, payload, callback) {

@@ -30,6 +30,31 @@ var apiRoutes = [
     },
     {
         method: 'GET',
+        path: '/organization',
+        handler: Api.getOrganizations
+    },
+    {
+        method: 'GET',
+        path: '/organization/{orgID}',
+        handler: Api.getOrganization
+    },
+    {
+        method: 'POST',
+        path: '/organization/create',
+        handler: Api.createOrganization
+    },
+    {
+        method: 'POST',
+        path: '/organization/edit',
+        handler: Api.editOrganization
+    },
+    {
+        method: 'POST',
+        path: '/organization/delete/{orgID}',
+        handler: Api.deleteOrganization
+    },
+    {
+        method: 'GET',
         path: '/users',
         handler: Api.getUserList
     },
@@ -83,6 +108,31 @@ var apiRoutes = [
         method: 'Delete',
         path: '/users/{userId}',
         handler: Api.deleteUser
+    },
+    {
+        method: 'POST',
+        path: '/timecard',
+        handler: Api.getTimecards
+    },
+    {
+        method: 'POST',
+        path: '/timecard/create',
+        handler: Api.createTimecard
+    },
+    {
+        method: 'GET',
+        path: '/timecard/{cardID}',
+        handler: Api.getTimecard
+    },
+    {
+        method: 'POST',
+        path: '/timecard/edit',
+        handler: Api.editTimecard
+    },
+    {
+        method: 'POST',
+        path: '/timecard/delete/{cardID}',
+        handler: Api.deleteTimecard
     },
     {
         method: 'POST',

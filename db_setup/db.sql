@@ -121,7 +121,7 @@ CREATE TABLE timecard (
   admin_signed boolean NOT NULL
 );
 
-INSERT INTO timecard (user_id, start_Date, end_date, employee_signed, admin_signed) VALUES (1, '2017-01-01', '2017-01-14', true, true);
+INSERT INTO timecard (user_id, start_date, end_date, employee_signed, admin_signed) VALUES (1, '2017-01-01', '2017-01-14', true, true);
 
 DROP TABLE IF EXISTS time_record;
 

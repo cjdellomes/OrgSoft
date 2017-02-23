@@ -21,6 +21,12 @@ var parseProperty = function(property) {
 // need to figure out how to "only insert if not exists" implementation
 var queries = {
 
+    getOrganizations: function () {
+        var queryString = 'SELECT id, name, register_date FROM organization;';
+
+        return queryString;
+    },
+
     createOrganization: function (payload) {
         var queryString = 'INSERT INTO organization ("name", "register_date") VALUES (\'' +
                             payload.name + '\', \'' +
@@ -35,17 +41,19 @@ var queries = {
         return queryString;
     },
 
-    getOrganizations: function () {
-        var queryString = 'SELECT id, name, register_date FROM organization;';
-
-        return queryString;
-    },
-
     editOrganizations: function (payload) {
         var queryString = 'UPDATE organization SET name = \'' + paylaod.name +
                             '\' register_date = \'' + payload.registerDate +
                             '\' WHERE id = ' + payload.id + ';';
+
+        return queryString;
     },
+
+    deleteOrganization: function (orgID) {
+        var queryString = 'DELETE FROM organization WHERE id = ' + orgID + ';';
+
+        return queryString;
+    }
 
     getUserList: function () {
         var queryString = 'SELECT id, org_id, username, is_admin FROM users;';
@@ -102,6 +110,47 @@ var queries = {
 
     deleteUser: function (userId) {
         var queryString = 'DELETE FROM users WHERE id = ' + userId + ';';
+
+        return queryString;
+    },
+
+    getTimecards: function () {
+        var queryString = 'SELECT user_id, start_date, end_date, employee_signed, admin_signed FROM timecard;';
+
+        return queryString;
+    },
+
+    createTimecard: function (payload) {
+        var queryString = 'INSERT INTO timecard (user_id, start_Date, end_date, employee_signed, admin_signed) VALUES (\'' +
+                            payload.userId + '\' \'' +
+                            payload.startDate + '\ \'' +
+                            payload.endDate + '\ \'' +
+                            payload.employeeSigned + '\ \'' +
+                            payload.adminSigned + '\');';
+
+        return queryString;
+    },
+
+    getTimecard: function (cardID) {
+        var queryString = 'SELECT user_id, start_date, end_date, employee_signed, admin_signed FROM timecard WHERE id = ' +
+                            cardId + ';';
+
+        return queryString;
+    },
+
+    editTimecard: function (payload) {
+        var queryString = 'UPDATE timecard SET user_id = \'' + payload.userID +
+                            '\' start_date = \'' + payload.startDate +
+                            '\' end_date = \'' + payload.endDate +
+                            '\' employee_signed = \'' + payload.employeeSigned +
+                            '\' admin_signed = \'' + payload.adminSigned +
+                            '\' WHERE id = ' + payload.id + ';';
+
+        return queryString;
+    },
+
+    deleteTimecard: function (cardID) {
+        var queryString = 'DELETE FROM timecard WHERE id = ' + cardID + ';';
 
         return queryString;
     },

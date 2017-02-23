@@ -5,6 +5,16 @@ var Respond = require(Path.join(__dirname, 'respond.js'));
 // these functions get called from routes/api_routes.js
 var api = {
 
+    getOrganizations: function (request, reply) {
+        Service.getOrganizations(request.postgres, function (err, result) {
+            if (err) {
+                Respond.failedToGetOrganizations(reply, err);
+            } else {
+                Respond.getOrganizations(reply, result);
+            }
+        });
+    },
+
     createOrganization: function (request, reply) {
         Service.createOrganization(request.postgres, request.payload, function (err, result) {
             if (err) {
@@ -25,22 +35,53 @@ var api = {
         });
     },
 
-    getOrganizations: function (request, reply) {
-        Service.getOrganizations(request.postgres, function (err, result) {
-            if (err) {
-                Respond.failedToGetOrganizations(reply, err);
-            } else {
-                Respond.getOrganizations(reply, result);
-            }
-        });
-    },
-
     editOrganization: function (request, reply) {
         Service.editOrganization(request.postgres, request.payload, function (err, result) {
             if (err) {
                 Respond.failedToEditOrganization(reply, err);
             } else {
                 Respond.editOrganization(reply, result);
+            }
+        });
+    },
+
+    deleteOrganization: function (request, reply) {
+        Service.deleteOrganization(request.postgres, request.params.orgID, function (err, result) {
+            if (err) {
+                Respond.failedToDeleteOrganization(reply, err);
+            } else {
+                Respond.deleteOrganization(reply, result);
+            }
+        });
+    },
+
+    login: function (request, reply) {
+        Service.getUserByQuery(request.postgres, {
+            username: request.payload.username
+        }, function (err, user) {
+            if (err) {
+                Respond.failedToGetUserByQuery(reply, err);
+            } else if (!user) {
+                Respond.userPassNoMatch(reply);
+            } else {
+                Service.matchPasswords(request.payload.password, user.hashedPassword, function (err, match) {
+                    if (err) {
+                        Respond.failedToComparePasswords(reply, err);
+                    } else if (!match) {
+                        Respond.userPassNoMatch(reply);
+                    } else {
+                        Service.genToken({
+                            id: user.id,
+                            username: user.username
+                        }, function (err, token) {
+                            if (err) {
+                                Respond.failedToGenToken(reply, err);
+                            } else {
+                                Respond.loggedIn(reply, token, user.id);
+                            }
+                        });
+                    }
+                });
             }
         });
     },
@@ -155,37 +196,6 @@ var api = {
         });
     },
 
-    login: function (request, reply) {
-        Service.getUserByQuery(request.postgres, {
-            username: request.payload.username
-        }, function (err, user) {
-            if (err) {
-                Respond.failedToGetUserByQuery(reply, err);
-            } else if (!user) {
-                Respond.userPassNoMatch(reply);
-            } else {
-                Service.matchPasswords(request.payload.password, user.hashedPassword, function (err, match) {
-                    if (err) {
-                        Respond.failedToComparePasswords(reply, err);
-                    } else if (!match) {
-                        Respond.userPassNoMatch(reply);
-                    } else {
-                        Service.genToken({
-                            id: user.id,
-                            username: user.username
-                        }, function (err, token) {
-                            if (err) {
-                                Respond.failedToGenToken(reply, err);
-                            } else {
-                                Respond.loggedIn(reply, token, user.id);
-                            }
-                        });
-                    }
-                });
-            }
-        });
-    },
-
     changeCurrentUserPassword: function (request, reply) {
         var userQuery;
         if (request.params.userId === 'self') {
@@ -256,6 +266,56 @@ var api = {
                         Respond.deleteUser(reply, result);
                     }
                 });
+            }
+        });
+    },
+
+    getTimecards: function (request, reply) {
+        Service.getTimecards(request.postgres, function (err, result) {
+            if (err) {
+                Respond.failedToGetTimecards(reply, err);
+            } else {
+                Respond.getTimecards(reply, result);
+            }
+        });
+    },
+
+    createTimecard: function (request, reply) {
+        Service.createTimecard(request.postgres, request.payload, function (err, result) {
+            if (err) {
+                Respond.failedToCreateTimecard(reply, err);
+            } else {
+                Respond.createTimecard(reply, result);
+            }
+        });
+    },
+
+    getTimecard: function (request, reply) {
+        Service.getTimecard(request.postgres, request.params.cardID, function (err, result) {
+            if (err) {
+                Respond.failedToGetTimecard(reply, err);
+            } else {
+                Respond.getTimecard(reply, result);
+            }
+        });
+    },
+
+    editTimecard: function (request, reply) {
+        Service.editTimecard(request.postgres, request.payload, function (err, result) {
+            if (err) {
+                Respond.failedToEditTimecard(reply, err);
+            } else {
+                Respond.editTimecard(reply, result);
+            }
+        });
+    },
+
+    deleteTimecard: function (request, reply) {
+        Service.deleteTimecard(request.postgres, request.params.cardID, function (err, result) {
+            if (err) {
+                Respond.failedToDeleteTimecard(reply, err);
+            } else {
+                Respond.deleteTimecard(reply, result);
             }
         });
     },
