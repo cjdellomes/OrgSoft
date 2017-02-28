@@ -108,7 +108,7 @@ CREATE TABLE users (
 );
 
 -- inserting user 'test' to login with password 'passwordisnone'
-INSERT INTO users (org_id, username, hashed_password, is_admin) VALUES (1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'John', 'Doe', 'John Doe', true);
+INSERT INTO users (org_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'John', 'Doe', 'John Doe', true);
 
 DROP TABLE IF EXISTS timecard;
 

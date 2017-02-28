@@ -56,14 +56,14 @@ var respond = {
             result: result
         }).code(200);
     },
-    failedToDeleteOrganization: function (reply, result) {
+    failedToDeleteOrganization: function (reply, err) {
         reply({
             statusCode: 500,
             message: "Unable to delete organization!",
             error: err
         }).code(500);
     },
-    deleteOrganization: function (reply, rsult) {
+    deleteOrganization: function (reply, result) {
         reply({
             statusCode: 200,
             message: "Successfully deleted organization!",
@@ -288,7 +288,7 @@ var respond = {
             result: result
         }).code(200);
     },
-    failedToDeleteTimecard: function (reply, result) {
+    failedToDeleteTimecard: function (reply, err) {
         reply({
             statusCode: 500,
             message: "Unable to delete timecard!",

@@ -42,7 +42,7 @@ var queries = {
     },
 
     editOrganizations: function (payload) {
-        var queryString = 'UPDATE organization SET name = \'' + paylaod.name +
+        var queryString = 'UPDATE organization SET name = \'' + payload.name +
                             '\' register_date = \'' + payload.registerDate +
                             '\' WHERE id = ' + payload.id + ';';
 
@@ -53,7 +53,7 @@ var queries = {
         var queryString = 'DELETE FROM organization WHERE id = ' + orgID + ';';
 
         return queryString;
-    }
+    },
 
     getUserList: function () {
         var queryString = 'SELECT id, org_id, username, is_admin FROM users;';
@@ -133,7 +133,7 @@ var queries = {
 
     getTimecard: function (cardID) {
         var queryString = 'SELECT user_id, start_date, end_date, employee_signed, admin_signed FROM timecard WHERE id = ' +
-                            cardId + ';';
+                            cardID + ';';
 
         return queryString;
     },

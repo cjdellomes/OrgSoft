@@ -73,6 +73,7 @@ var query = {
                 return callback(err);
             }
             client.query(Queries.deleteOrganization(orgID), function (err, result) {
+                done();
                 if (err) {
                     return callback(err);
                 }

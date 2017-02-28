@@ -47,7 +47,7 @@ var service = {
         });
     },
 
-    deleteOrganization: function (postgres, payload, callback) {
+    deleteOrganization: function (postgres, orgID, callback) {
         Query.deleteOrganization(postgres, orgID, function (err, result) {
             if (err) {
                 return callback(err);
