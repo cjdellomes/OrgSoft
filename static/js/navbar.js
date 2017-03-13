@@ -1,8 +1,6 @@
 $(function () {
   var setupNavbar = function () {
 
-    console.log('TEST');
-
       $('a').each(function(){
           if ($(this).prop('href') == window.location.href) {
               $(this).parents('li').addClass('active');
@@ -16,6 +14,8 @@ $(function () {
       if (typeof(Storage) !== "undefined" && localStorage.getItem("authorization")) {
           console.log("We have authorization");
 
+          $('#bubbles').show();
+          $('#register-panel').hide();
           login.hide();
           alert.show();
           alertList.empty();
@@ -24,6 +24,8 @@ $(function () {
       } else {
           console.log("We do not have authorization");
 
+          $('#bubbles').hide();
+          $('#register-panel').show();
           login.show();
           alert.hide();
           alertList.empty();

@@ -2,7 +2,7 @@
 
     {% include "components/_navbar.html" %}
 
-    <div id="bubbles" class="text-center">
+    <div id="bubbles" class="text-center" style="display: none">
       <div class="container">
         <div class="section-title center">
           <h2>Welcome to the OrgSoft Dashboard</h2>
@@ -14,28 +14,83 @@
         <div class="space"></div>
         <div class="row">
             <div class="col-md-3 col-sm-5 col-sm-offset-1 col-md-offset-0 bubble">
-                <a href="frontdesk"><i class="fa fa-clock-o"></i></a>
+                <a href="timecard"><i class="fa fa-clock-o"></i></a>
                 <h4>Timecard</h4>
                 <p>Record and track timecard information</p>
             </div>
             <div class="col-md-3 col-sm-5 col-sm-offset-1 col-md-offset-0 bubble">
-                <a href="case_notes"><i class="fa fa-folder-open-o"></i></a>
+                <a href="review"><i class="fa fa-folder-open-o"></i></a>
                 <h4>Employee Reviews</h4>
                 <p>Record and track employee review history</p>
             </div>
             <div class="col-md-3 col-sm-5 bubble">
-                <a href="case_manager"><i class="fa fa-street-view"></i></a>
+                <a href="manage_employee"><i class="fa fa-street-view"></i></a>
                 <h4>Manage Employees</h4>
                 <p>Manage and adjust employee information</p>
             </div>
             <div class="col-md-3 bubble">
-                <a href="add_client"><i class="fa fa-user-plus"></i></a>
+                <a href="add_employee"><i class="fa fa-user-plus"></i></a>
                 <h4>Add new employee</h4>
                 <p>Add a new employee to your organization</p>
             </div>
         </div>
         <div class="space"></div>
       </div>
+    </div>
+
+    <div id="register-panel" class="text-center" style="display: none">
+        <div class="row pt-1">
+            <div class="col-lg-9 offset-lg-2">
+                <div class="jumbotron">
+                    <h2 class="display-3">Register With OrgSoft</h2>
+
+                    <hr class="my-2">
+
+                    <form id="register">
+                        <div class="form-group">
+                            <div>
+                              <label for="first_name">First Name</label>
+                              <input type="text" class="form-control" placeholder="First Name" name="first_name" id="first_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                              <label for="last_name">Last Name</label>
+                              <input type="text" class="form-control" placeholder="Last Name" name="last_name" id="last_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                              <label for="org_name">Organization Name</label>
+                              <input type="text" class="form-control" placeholder="Organization Name" name="org_name" id="org_name">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                              <label for="username">Username</label>
+                              <input type="text" class="form-control" placeholder="Username" name="username" id="username">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                              <label for="password">Password</label>
+                              <input type="text" class="form-control" placeholder="Password" name="password" id="password">
+                            </div>
+                        </div>
+                        <div class="form-group">
+                            <div>
+                              <label for="confirm_password">Confirm Password</label>
+                              <input type="text" class="form-control" placeholder="Confirm Password" name="confirm_password" id="confirm_password">
+                            </div>
+                        </div>
+                        <p class="lead pt-1">
+                          <button type="submit" class="btn btn-outline-primary btn-lg btn-block" role="button">Register</button>
+                          <p id="status"></p>
+                        </p>
+                    </form>
+                </div>
+            </div>
+        </div>
     </div>
 
     {% include "components/_basescript.html" %}

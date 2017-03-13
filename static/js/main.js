@@ -52,7 +52,6 @@ $(function () {
     };
 
     window.sessionStorageListeners = [];
-    console.log('main test');
 
     window.sessionStorageListeners.forEach(function (listener) {
         console.log(listener);
