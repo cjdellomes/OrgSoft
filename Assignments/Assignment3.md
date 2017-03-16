@@ -57,3 +57,76 @@ Assumptions:
 5. The parking lot has empty spots
 6. The supermarket is open for business
 7. The user knows how to operate an automatic transmission car
+
+##8.1
+
+```
+from random import randint
+
+def test_is_relatively_prime (a, b):
+    a = abs(a);
+    b = abs(b);
+
+    if (a === 1 || b === 1) return True
+    if (a === 0 || b === 0) return False
+
+    min = Math.min
+    factor = 2
+    while (factor <= min):
+        if ((a % factor === 0) && (b % factor === 0)) return False
+        factor += 1
+
+    return true;
+
+for x in xrange(1000):
+    assert test_is_relatively_prime(randint()) == is_relatively_prime(randint())
+```
+
+##8.3
+Since it is unknown how the isRelativelyPrime method works, the test code written is black box testing. An exhaustive test would be possible by testing evey value between a very large number and its negative counterpart (e.x. 1 trillion and -1 trillion). However, this would be a large number of pairs to test and unnecessarily excessive.
+
+##8.5
+```
+from random import randint
+from fractions import gcd
+
+def is_relatively_prime (a, b):
+    if (a == 0) return ((b == 1) || (b == -1))
+    if (b == 0) return ((a == 1) || (a == -1))
+
+    gcd = gcd(a, b)
+    return ((gcd == 1) || (gcd == -1))
+
+def test_is_relatively_prime (a, b):
+    a = abs(a);
+    b = abs(b);
+
+    if (a === 1 || b === 1) return True
+    if (a === 0 || b === 0) return False
+
+    min = Math.min
+    factor = 2
+    while (factor <= min):
+        if ((a % factor === 0) && (b % factor === 0)) return False
+        factor += 1
+
+    return true;
+
+for x in xrange(1000):
+    assert test_is_relatively_prime(randint()) == is_relatively_prime(randint())
+```
+
+##8.9
+Exhaustive testing counts as black box testing because knowledge of how the tested code works is not necessary.
+
+##8.11
+First, calculate three Lincoln indexes, one for each pair of testers.
+
+1. (Alice, Bob): 5 * 4 / 2 = 10
+2. (Alice, Carmen): 5 * 5 / 2 = 12.5
+3. (Bob, Carmen): 4 * 5 / 1 = 20
+
+This gives us an average of (10 + 12.5 + 20) / 3 = 14 bugs as well as a worst case of 20 bugs.
+
+##8.12
+If the testers have no bugs in common, index is divided by 0, which gives us an undefined number of bugs. A lower bound for the number of bugs could found by assuming the testers found one bug in common instead of 0. This assumption gives us 5 * 6 / 1 = 30 bugs.
