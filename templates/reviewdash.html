@@ -1,0 +1,66 @@
+{% include "components/_header.html" %}
+
+{% include "components/_navbar.html" %}
+
+<h2>Reviews</h2>
+<div class="card">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-md-8" id="dt-search"></div>
+			<div class="col-md-3">
+			    <select class="form-control-sm input" id="export">
+			        <option value="">Export Format</option>
+			        <option value="copy">Copy</option>
+			        <option value="csv">CSV</option>
+			        <option value="excel">Excel</option>
+			        <option value="pdf">PDF</option>
+			        <option value="print">Print</option>
+			    </select>
+			</div>
+			<div class="col-md-1" id="dt-buttons"></div>
+		</div>
+	</div>
+	<table class="table table-bordered table-responsive table-condensed" id="Table" name="Table" hidden>
+		<thead id="TableHeader" name="TableHeader">
+			<tr>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="FLSA" size="2">
+			        <p hidden>FLSA</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="Employee" size="15">
+			        <p hidden>Employee</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="Super" size="5">
+			        <p hidden>Supervisor</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="Last Rev" size="5">
+			        <p hidden>Last Review</p>
+			    </th>
+			    <th class="table-sort sorting"> 
+			        <input type="text" placeholder="Next Rev" size="5">
+			        <p hidden>Upcoming Reveiw</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="Rev Status" size="6">
+			        <p hidden>Review Status</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="Days Till" size="5">
+			        <p hidden>Days Until Review</p>
+			    </th>
+			    <th>Options</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<div id="Top">
+	    <a href="#" class="btn btn-primary">To Top</a>
+	</div>
+</div>
+
+{% include "components/_basescript.html" %}
+{% include "components/_footer.html" %}

@@ -62,6 +62,19 @@ var viewRoutes = [
                 
             });
         }
+    },
+
+    {
+        path: '/review',
+        method: 'GET',
+        config: {
+            auth: false
+        },
+        handler: function (req, res) {
+            res.view('reviewdash.html', {
+                
+            });
+        }
     }
 ];
 

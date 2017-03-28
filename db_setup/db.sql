@@ -99,6 +99,7 @@ DROP TABLE IF EXISTS users;
 CREATE TABLE users (
   id SERIAL PRIMARY KEY,
   org_id integer REFERENCES organization (id),
+  sup_id integer REFERENCES users (id),
   username varchar(45) NOT NULL,
   hashed_password varchar(70) NOT NULL,
   first_name varchar(45) NOT NULL,
@@ -108,7 +109,7 @@ CREATE TABLE users (
 );
 
 -- inserting user 'test' to login with password 'passwordisnone'
-INSERT INTO users (org_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'John', 'Doe', 'John Doe', true);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, null, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'John', 'Doe', 'John Doe', true);
 
 DROP TABLE IF EXISTS timecard;
 
