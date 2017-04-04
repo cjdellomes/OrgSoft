@@ -1,0 +1,20 @@
+thead > tr {
+    width: auto;
+}
+
+#Top {
+    position: fixed;
+    padding: 5px, 3px;
+    bottom: 20px;
+    left: 50%;
+    display: none;
+}
+
+#export {
+    width: 125px;
+    margin: 0px;
+}
+
+.card {
+    border: 0;
+}
