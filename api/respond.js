@@ -357,7 +357,77 @@ var respond = {
             message: "Successfully deleted file",
             result: result
         }).code(200);
-    }
+    },
+    failedToGetReviews: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get reviews",
+            error: err
+        }).code(500);
+    },
+    getReviews: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got reviews",
+            result: result
+        }).code(200);
+    },
+    failedToCreateReview: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to create review",
+            error: err
+        }).code(500);
+    },
+    createReview: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully created review",
+            result: result
+        }).code(200);
+    },
+    failedToGetReview: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get review",
+            error: err
+        }).code(500);
+    },
+    getReview: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got review",
+            result: result
+        }).code(200);
+    },
+    failedToEditReview: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to edit review",
+            error: err
+        }).code(500);
+    },
+    editReview: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully edited review",
+            result: result
+        }).code(200);
+    },
+    failedToDeleteReview: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to delete review",
+            error: err
+        }).code(500);
+    },
+    deleteReview: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully delted review",
+            result: result
+        }).code(200);
+    },
 };
 
 module.exports = respond;

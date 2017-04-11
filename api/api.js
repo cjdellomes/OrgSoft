@@ -368,6 +368,56 @@ var api = {
                 Respond.getProfilePicture(reply, result);
             }
         });
+    };
+
+    getReviews: function (request, reply) {
+        Service.getReviewss(request.postgres, function (err, result) {
+            if (err) {
+                Respond.failedToGetReviews(reply, err);
+            } else {
+                Respond.getReviews(reply, result);
+            }
+        });
+    };
+
+    createReview: function (request, reply) {
+        Service.createReview(request.postgres, request.payload, function (err, result) {
+            if (err) {
+                Respond.failedToCreateReview(reply, err);
+            } else {
+                Respond.createReview(reply, result);
+            }
+        });
+    };
+
+    getReview: function (request, reply) {
+        Service.getReview(request.postgres, request.params.reviewID, function (err, result) {
+            if (err) {
+                Respond.failedToGetReview(reply, err);
+            } else {
+                Respond.getReview(reply, result);
+            }
+        });
+    };
+
+    editReview: function (request, reply) {
+        Service.editReview(request.postgres, request.payload, function (err, result) {
+            if (err) {
+                Respond.failedToEditReview(reply, err);
+            } else {
+                Respond.editReview(reply, result);
+            }
+        });
+    };
+
+    deleteReview: function (request, reply) {
+        Service.deleteReview(request.postgres, request.params.reviewID, function (err, result) {
+            if (err) {
+                Respond.failedToDeleteReview(reply, err);
+            } else {
+                Respond.deleteReview(reply, result);
+            }
+        });
     }
 };
 

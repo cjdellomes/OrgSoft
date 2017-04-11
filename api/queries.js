@@ -122,7 +122,7 @@ var queries = {
 
     createTimecard: function (payload) {
         var queryString = 'INSERT INTO timecard (user_id, start_Date, end_date, employee_signed, admin_signed) VALUES (\'' +
-                            payload.userId + '\' \'' +
+                            payload.userID + '\' \'' +
                             payload.startDate + '\ \'' +
                             payload.endDate + '\ \'' +
                             payload.employeeSigned + '\ \'' +
@@ -182,7 +182,51 @@ var queries = {
                             'AND id = (SELECT MAX(id) FROM file WHERE client_id = ' + clientID +
                             ' AND type=\'profile_picture\');';
         return queryString;
-    }
+    };
+
+    getReviews: function () {
+        var queryString = 'SELECT user_id, type, date, next_review_date, late, confirmed, days_until_review, status FROM review;';
+
+        return queryString;
+    };
+
+    createReview: function (payload) {
+        var queryString = 'INSERT INTO review (user_id, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (\'' +
+                                payload.userID + '\' \'' +
+                                payload.type + '\ \'' +
+                                payload.date + '\ \'' +
+                                payload.nextReviewDate + '\ \'' +
+                                payload.late + '\ \'' +
+                                payload.confirmed + '\ \'' +
+                                payload.daysUntilReview + '\ \'' +
+                                payload.status + '\');';
+
+        return queryString;
+    };
+
+    getReview: function (reviewID) {
+        var queryString = 'SELECT user_id, type, date, next_review_date, late, confirmed, days_until_review, status FROM review WHERE id = ' + reviewID + ';';
+
+        return queryString;
+    };
+
+    editReview: function (payload) {
+        var queryString = 'UPDATE review SET user_id - \'' + payload.userID +
+                            '\' type = \'' + payload.type +
+                            '\' date = \'' + payload.date +
+                            '\' next_review_Date = \'' + payload.nextReviewDate +
+                            '\' late = \'' + payload.late +
+                            '\' confirmed = \'' + payload.confirmed +
+                            '\' daysUntilReview = \'' + payload.daysUntilReview +
+                            '\' status = \'' + payload.status +
+                            '\' WHERE id = ' + payload.id + ';';
+    };
+
+    deleteReview: function (reviewID) {
+        var queryString = 'DELETE from review WHERE id = ' + reviewID + ';';
+
+        return queryString;
+    };
 };
 
 module.exports = queries;

@@ -239,7 +239,52 @@ var service = {
             }
             callback(undefined, result);
         });
-    }
+    };
+
+    getReviews: function (postgres, callback) {
+        Query.getReviews(postgres, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    };
+
+    createReview: function (postgres, payload, callback) {
+        Query.createReview(postgres, payload, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    };
+
+    getReview: function (postgres, reviewID, callback) {
+        Query.getReview(postgres, reviewID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    };
+
+    editReview: function (postgres, payload, callback) {
+        Query.editReview(postgres, payload, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    };
+
+    deleteReview: function (postgres, reviewID, callback) {
+        Query.deleteReview(postgres, reviewID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    };
 };
 
 module.exports = service;
