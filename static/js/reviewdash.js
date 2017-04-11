@@ -45,6 +45,33 @@ $(function (event) {
 		});
 	}
 
+	var getReviews = function () {
+		$.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/review',
+            method: 'GET',
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+	}
+
 	initiateDataTable();
+
+	getReviews();
 
 });

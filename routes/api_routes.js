@@ -110,7 +110,7 @@ var apiRoutes = [
         handler: Api.deleteUser
     },
     {
-        method: 'POST',
+        method: 'GET',
         path: '/timecard',
         handler: Api.getTimecards
     },
@@ -160,6 +160,31 @@ var apiRoutes = [
         method: 'POST',
         path: '/files/delete/{fileID}',
         handler: Api.deleteFile
+    },
+    {
+        method: 'GET',
+        path: '/review',
+        handler: Api.getReviews
+    },
+    {
+        method: 'POST',
+        path: '/review/create',
+        handler: Api.createReview
+    },
+    {
+        method: 'GET',
+        path: '/review/{reviewID}',
+        handler: Api.getReview
+    },
+    {
+        method: 'POST',
+        path: '/review/edit',
+        handler: Api.editReview
+    },
+    {
+        method: 'POST',
+        path: '/review/delete/{reviewID}',
+        handler: Api.deleteReview
     }
 ];
 

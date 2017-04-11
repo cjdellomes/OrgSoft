@@ -161,10 +161,13 @@ CREATE TABLE settings (
 
 INSERT INTO settings (user_id, settings_data) VALUES (1, '{ "default": true, "primary": true, "success": true, "info": true, "warning": false, "danger": false }');
 
+DROP TABLE IF EXISTS review;
+
 CREATE TABLE review (
   id SERIAL PRIMARY KEY,
   user_id integer REFERENCES users (id),
-  type varchar(20) DEFAULT NULL,
+  flsa varchar(3) NOT NULL
+  type varchar(20) NOT NULL,
   date date NOT NULL,
   next_review_date date NOT NULL,
   late boolean NOT NULL,
@@ -173,4 +176,4 @@ CREATE TABLE review (
   status varchar(25) NOT NULL
 );
 
-INSERT INTO review (user_id, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (1, 'Annual', '2017-01-01', '2018-01=31', false, true, 200, 'Future Review');
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (1, 'N', 'Annual', '2017-01-01', '2018-01-31', false, true, 200, 'Future Review');
