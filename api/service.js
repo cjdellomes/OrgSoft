@@ -284,6 +284,15 @@ var service = {
             }
             callback(undefined, result);
         });
+    },
+
+    getReviewDash: function (postgres, callback) {
+        Query.getReviewDash(postgres, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
     }
 };
 

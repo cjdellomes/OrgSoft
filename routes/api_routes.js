@@ -185,6 +185,11 @@ var apiRoutes = [
         method: 'POST',
         path: '/review/delete/{reviewID}',
         handler: Api.deleteReview
+    },
+    {
+        method: 'GET',
+        path: '/review/dash',
+        handler: Api.getReviewDash
     }
 ];
 

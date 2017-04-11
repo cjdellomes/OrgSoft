@@ -418,6 +418,16 @@ var api = {
                 Respond.deleteReview(reply, result);
             }
         });
+    },
+
+    getReviewDash: function (request, reply) {
+        Service.getReviewDash(request.postgres, function (err, result) {
+            if (err) {
+                Respond.failedToGetReviewDash(reply, err);
+            } else {
+                Respond.getReviewDash(reply, result);
+            }
+        });
     }
 };
 

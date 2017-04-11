@@ -166,7 +166,7 @@ DROP TABLE IF EXISTS review;
 CREATE TABLE review (
   id SERIAL PRIMARY KEY,
   user_id integer REFERENCES users (id),
-  flsa varchar(3) NOT NULL
+  flsa varchar(3) NOT NULL,
   type varchar(20) NOT NULL,
   date date NOT NULL,
   next_review_date date NOT NULL,

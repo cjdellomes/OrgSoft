@@ -185,14 +185,15 @@ var queries = {
     },
 
     getReviews: function () {
-        var queryString = 'SELECT user_id, type, date, next_review_date, late, confirmed, days_until_review, status FROM review;';
+        var queryString = 'SELECT user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status FROM review;';
 
         return queryString;
     },
 
     createReview: function (payload) {
-        var queryString = 'INSERT INTO review (user_id, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (\'' +
+        var queryString = 'INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (\'' +
                                 payload.userID + '\' \'' +
+                                payload.flsa + '\ \'' +
                                 payload.type + '\ \'' +
                                 payload.date + '\ \'' +
                                 payload.nextReviewDate + '\ \'' +
@@ -205,13 +206,14 @@ var queries = {
     },
 
     getReview: function (reviewID) {
-        var queryString = 'SELECT user_id, type, date, next_review_date, late, confirmed, days_until_review, status FROM review WHERE id = ' + reviewID + ';';
+        var queryString = 'SELECT user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status FROM review WHERE id = ' + reviewID + ';';
 
         return queryString;
     },
 
     editReview: function (payload) {
         var queryString = 'UPDATE review SET user_id - \'' + payload.userID +
+                            '\' flsa = \'' + payload.flsa +
                             '\' type = \'' + payload.type +
                             '\' date = \'' + payload.date +
                             '\' next_review_Date = \'' + payload.nextReviewDate +
@@ -220,6 +222,8 @@ var queries = {
                             '\' daysUntilReview = \'' + payload.daysUntilReview +
                             '\' status = \'' + payload.status +
                             '\' WHERE id = ' + payload.id + ';';
+
+        return queryString;
     },
 
     deleteReview: function (reviewID) {
@@ -227,6 +231,12 @@ var queries = {
 
         return queryString;
     },
+
+    getReviewDash: function () {
+        var queryString = 'SELECT flsa, display_name, sup_id, date, next_review_date, status, days_until_review FROM users LEFT JOIN review ON users.id = review.user_id;';
+
+        return queryString;
+    }
 };
 
 module.exports = queries;

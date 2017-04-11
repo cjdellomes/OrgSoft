@@ -428,6 +428,20 @@ var respond = {
             result: result
         }).code(200);
     },
+    failedToGetReviewDash: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get review dashboard",
+            error: err
+        }).code(500);
+    },
+    getReviewDash: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got review dashboard",
+            result: result
+        }).code(200);
+    },
 };
 
 module.exports = respond;

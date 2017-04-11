@@ -53,10 +53,12 @@ $(function (event) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
             },
-            url: 'api/review',
+            url: 'api/review/dash',
             method: 'GET',
             success: function (data) {
                 console.log(data);
+
+                fillTable(data.result.rows)
             },
             error: function (xhr) {
                 console.log(xhr);
@@ -68,6 +70,20 @@ $(function (event) {
         }).done(function (data) {
 
         });
+	}
+
+	var fillTable = function (rows) {
+		for (var i = 0; i < rows.length; i++) {
+			var row = rows[i];
+			
+			$('#tbody').append('<tr>' + '<td>' + row.flsa + '</td>' +
+				'<td>' + row.display_name + '</td>' +
+				'<td>' + row.sup_id + '</td>' +
+				'<td>' + row.date + '</td>' +
+				'<td>' + row.next_review_date + '</td>' +
+				'<td>' + row.status + '</td>' +
+				'<td>' + row.days_until_review + '</td>');
+		}
 	}
 
 	initiateDataTable();
