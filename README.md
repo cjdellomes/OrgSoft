@@ -1,4 +1,4 @@
-##OrgSoft
+# OrgSoft
 
 [Read the Project Proposal](Deliverables/project-proposal-document.md)
 
