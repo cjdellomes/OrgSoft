@@ -90,7 +90,8 @@ $(function (event) {
                 		date,
                 		nextReviewDate,
                 		row.status,
-                		row.days_until_review
+                		row.days_until_review,
+                		null
                 	]).draw(false);
                 });
             },

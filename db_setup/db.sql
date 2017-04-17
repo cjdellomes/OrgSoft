@@ -110,6 +110,10 @@ CREATE TABLE users (
 
 -- inserting user 'test' to login with password 'passwordisnone'
 INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, null, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'John', 'Doe', 'John Doe', true);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'Steve', 'Smith', 'Steve Smith', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'Adam', 'Doe', 'Adam Doe', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'Owen', 'Levi', 'Owen Levi', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'Bob', 'John', 'Bob John', false);
 
 DROP TABLE IF EXISTS timecard;
 
@@ -177,3 +181,7 @@ CREATE TABLE review (
 );
 
 INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (1, 'N', 'Annual', '2017-01-01', '2018-01-31', false, true, 200, 'Future Review');
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (2, 'N', 'Annual', '2017-02-01', '2018-02-28', false, true, 200, 'Future Review');
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (3, 'N', 'Annual', '2017-03-01', '2018-03-31', false, true, 200, 'Future Review');
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (4, 'N', 'Annual', '2017-04-01', '2018-04-30', false, true, 200, 'Future Review');
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (5, 'N', 'Annual', '2017-05-01', '2018-05-31', false, true, 200, 'Future Review');
