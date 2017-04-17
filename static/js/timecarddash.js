@@ -8,7 +8,7 @@ $(function (event) {
 			},
 			paging: false,
 			dom: "Bfrtip",
-			buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+			buttons: ['copy', 'excel', 'pdf', 'csv', 'print'],
 		});
 
 		// On column text box change, search input and redraw datatable
@@ -69,7 +69,7 @@ $(function (event) {
 						},
 						paging: false,
 						dom: "Bfrtip",
-						buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+						buttons: ['copy', 'excel', 'pdf', 'csv', 'print'],
 					});
                 } else {
                     table = $('#Table').DataTable();
