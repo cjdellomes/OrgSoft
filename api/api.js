@@ -134,7 +134,7 @@ var api = {
         });
     },
 
-    getUser: function (request, reply) {
+    getUserByQuery: function (request, reply) {
         var userQuery;
         if (request.params.userId === 'self') {
             userQuery = {
@@ -155,6 +155,16 @@ var api = {
                     id: user.id,
                     username: user.username
                 });
+            }
+        });
+    },
+
+    getUser: function (request, reply) {
+        Service.getUser(request.postgres, request.params.userID, function (err, result) {
+            if (err) {
+                Respond.failedToGetUser(reply, err);
+            } else {
+                Respond.getUser(reply, result);
             }
         });
     },

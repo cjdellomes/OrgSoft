@@ -130,6 +130,13 @@ var respond = {
             message: "Username does not exist!"
         }).code(404);
     },
+    failedToGetUser: function (reply, result) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get User!",
+            error: err
+        }).code(500);
+    },
     getUser: function (reply, result) {
         reply({
             statusCode: 200,

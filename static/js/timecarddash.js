@@ -47,7 +47,7 @@ $(function (event) {
 		return table;
 	}
 
-	var getReviews = function (table) {
+	var getTimecards = function (table) {
 		$.ajax({
             xhrFields: {
                 withCredentials: true
@@ -55,7 +55,7 @@ $(function (event) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
             },
-            url: 'api/review/dash',
+            url: 'api/timecard',
             method: 'GET',
             success: function (data) {
                 console.log(data);
@@ -78,19 +78,17 @@ $(function (event) {
                 table.rows().remove().draw();
 
                 rows.forEach(function (row) {
-                	var date = new Date(row.date);
-                	var nextReviewDate = new Date(row.next_review_date);
-                	date = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
-                	nextReviewDate = nextReviewDate.getMonth() + 1 + "/" + nextReviewDate.getDate() + "/" + nextReviewDate.getFullYear();
+                	var startDate = new Date(row.start_date);
+                	var endDate = new Date(row.end_date);
+                	startDate = startDate.getMonth() + 1 + "/" + startDate.getDate() + "/" + startDate.getFullYear();
+                	endDate = endDate.getMonth() + 1 + "/" + endDate.getDate() + "/" + endDate.getFullYear();
 
                 	var row = table.row.add([
-                		row.flsa,
-                		row.display_name,
-                		row.supervisor,
-                		date,
-                		nextReviewDate,
-                		row.status,
-                		row.days_until_review,
+                		row.user_id,
+                		startDate,
+                		endDate,
+                		row.employee_signed,
+                		row.admin_signed,
                 		null
                 	]).draw(false);
                 });
@@ -109,6 +107,6 @@ $(function (event) {
 
 	var table = initiateDataTable();
 
-	getReviews(table);
+	getTimecards(table);
 
 });

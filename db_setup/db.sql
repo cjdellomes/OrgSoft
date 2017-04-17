@@ -110,10 +110,10 @@ CREATE TABLE users (
 
 -- inserting user 'test' to login with password 'passwordisnone'
 INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, null, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'John', 'Doe', 'John Doe', true);
-INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'Steve', 'Smith', 'Steve Smith', false);
-INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'Adam', 'Doe', 'Adam Doe', false);
-INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'Owen', 'Levi', 'Owen Levi', false);
-INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'Bob', 'John', 'Bob John', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test1', '$2a$06$nEwCWSFpeBrSih3vaK8xEeeT7ONoVD/79a72xdY7SqLp22sAA4KqG', 'Steve', 'Smith', 'Steve Smith', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test2', '$2a$06$0ZFrkk6fixf3qIWML32rquwTSayMI3JiVGg7bpuePvc.PlPiy3XlW', 'Adam', 'Doe', 'Adam Doe', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'tes3', '$2a$06$k5IdDic3/4g3KugxIH3/qe9Fv1EWJZQHcctAwiF4N/45lSU6mGN.u', 'Owen', 'Levi', 'Owen Levi', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'tes4', '$2a$06$agy2l3SUmPrrHSgVOkceu.suqIQVTo/Evxi/9Baur3pu90TvxWV4i', 'Bob', 'John', 'Bob John', false);
 
 DROP TABLE IF EXISTS timecard;
 
@@ -127,6 +127,7 @@ CREATE TABLE timecard (
 );
 
 INSERT INTO timecard (user_id, start_date, end_date, employee_signed, admin_signed) VALUES (1, '2017-01-01', '2017-01-14', true, true);
+INSERT INTO timecard (user_id, start_date, end_date, employee_signed, admin_signed) VALUES (1, '2017-01-15', '2017-01-29', true, true);
 
 DROP TABLE IF EXISTS time_record;
 

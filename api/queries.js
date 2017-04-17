@@ -62,7 +62,7 @@ var queries = {
     },
 
     getUserByQuery: function (query) {
-        var queryString = 'SELECT id, username, hashed_password FROM users WHERE';
+        var queryString = 'SELECT id, username, hashed_password, first_name, last_name, display_name, is_admin FROM users WHERE';
         var setId = false;
 
         if (query.id) {
@@ -76,6 +76,12 @@ var queries = {
             queryString += ' username = \'' + query.username + '\'';
         }
         queryString += ';';
+
+        return queryString;
+    },
+
+    getUser: function (userID) {
+        var queryString = 'SELECT id, username, hashed_password, first_name, last_name, display_name, is_admin FROM users WHERE id = ' + userID + ';';
 
         return queryString;
     },
@@ -233,7 +239,9 @@ var queries = {
     },
 
     getReviewDash: function () {
-        var queryString = 'SELECT flsa, display_name, sup_id, date, next_review_date, status, days_until_review FROM users LEFT JOIN review ON users.id = review.user_id;';
+        //var queryString = 'SELECT flsa, display_name, sup_id, date, next_review_date, status, days_until_review FROM users LEFT JOIN review ON users.id = review.user_id;';
+
+        var queryString = 'SELECT flsa, a.display_name AS display_name, b.display_name AS supervisor, date, next_review_date, status, days_until_review FROM users a LEFT JOIN review ON a.id = review.user_id LEFT JOIN users b on a.sup_id = b.id;';
 
         return queryString;
     }

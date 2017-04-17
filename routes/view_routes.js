@@ -75,7 +75,20 @@ var viewRoutes = [
                 
             });
         }
-    }
+    },
+
+    {
+        path: '/timecard',
+        method: 'GET',
+        config: {
+            auth: false
+        },
+        handler: function (req, res) {
+            res.view('timecarddash.html', {
+                
+            });
+        }
+    },
 ];
 
 module.exports = viewRoutes;

@@ -71,6 +71,11 @@ var apiRoutes = [
     {
         method: 'GET',
         path: '/users/{userId}',
+        handler: Api.getUserByQuery
+    },
+    {
+        method: 'GET',
+        path: '/users/get/{userID}',
         handler: Api.getUser
     },
     {
@@ -106,7 +111,7 @@ var apiRoutes = [
     },
     {
         method: 'Delete',
-        path: '/users/{userId}',
+        path: '/users/delete/{userId}',
         handler: Api.deleteUser
     },
     {

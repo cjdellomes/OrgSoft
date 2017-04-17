@@ -23,35 +23,27 @@
 	<table class="table table-bordered table-responsive table-condensed" id="Table" name="Table" style="display:none">
 		<thead id="TableHeader" name="TableHeader">
 			<tr>
-			    <th class="table-sort sorting">
-			        <input type="text" placeholder="FLSA" size="10">
-			        <p hidden>FLSA</p>
+				<th class="table-sort sorting">
+			        <input type="text" placeholder="User ID" size="17">
+			        <p hidden>User ID</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Employee" size="10">
+			        <input type="text" placeholder="Start Date" size="17">
+			        <p hidden>Start Date</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="End Date" size="17">
 			        <p hidden>Employee</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Supervisor" size="11">
-			        <p hidden>Supervisor</p>
+			        <input type="text" placeholder="Employee Signed" size="18">
+			        <p hidden>Employee Signed</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Last Rev" size="10">
-			        <p hidden>Last Review</p>
+			        <input type="text" placeholder="Admin Signed" size="18">
+			        <p hidden>Admin Signed</p>
 			    </th>
-			    <th class="table-sort sorting"> 
-			        <input type="text" placeholder="Next Rev" size="10">
-			        <p hidden>Upcoming Reveiw</p>
-			    </th>
-			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Rev Status" size="15">
-			        <p hidden>Review Status</p>
-			    </th>
-			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Days Till" size="10">
-			        <p hidden>Days Until Review</p>
-			    </th>
-			    <th>Options</th>
+			    <th>Details</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -76,6 +68,6 @@
   <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 
-  <script type="text/babel" src="static/js/reviewdash.js"></script>
+  <script type="text/babel" src="static/js/timecarddash.js"></script>
   <script type="text/babel" src="static/js/topbutton.js"></script>
 {% include "components/_footer.html" %}

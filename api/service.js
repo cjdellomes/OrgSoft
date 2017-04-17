@@ -93,6 +93,15 @@ var service = {
         });
     },
 
+    getUser: function (postgres, userID, callback) {
+        Query.getUser(postgres, userID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     createUser: function (postgres, payload, callback) {
         bcrypt.hash(payload.password, saltRounds, function (err, hash) {
             if (err) {
