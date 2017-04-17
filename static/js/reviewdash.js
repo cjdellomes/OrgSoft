@@ -43,9 +43,11 @@ $(function (event) {
 		        $(button).show();
 		    }
 		});
+
+		return table;
 	}
 
-	var getReviews = function () {
+	var getReviews = function (table) {
 		$.ajax({
             xhrFields: {
                 withCredentials: true
@@ -58,7 +60,39 @@ $(function (event) {
             success: function (data) {
                 console.log(data);
 
-                fillTable(data.result.rows)
+                var rows = data.result.rows;
+
+                if (!$.fn.DataTable.isDataTable('#Table')) {
+                    table = $('#Table').DataTable({
+						initComplete: function (settings, json) {
+						    $("#Table").show();
+						},
+						paging: false,
+						dom: "Bfrtip",
+						buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+					});
+                } else {
+                    table = $('#Table').DataTable();
+                }
+
+                table.rows().remove().draw();
+
+                rows.forEach(function (row) {
+                	var date = new Date(row.date);
+                	var nextReviewDate = new Date(row.next_review_date);
+                	date = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
+                	nextReviewDate = nextReviewDate.getMonth() + 1 + "/" + nextReviewDate.getDate() + "/" + nextReviewDate.getFullYear();
+
+                	var row = table.row.add([
+                		row.flsa,
+                		row.display_name,
+                		row.sup_id,
+                		date,
+                		nextReviewDate,
+                		row.status,
+                		row.days_until_review
+                	]).draw(false);
+                });
             },
             error: function (xhr) {
                 console.log(xhr);
@@ -86,8 +120,8 @@ $(function (event) {
 		}
 	}
 
-	initiateDataTable();
+	var table = initiateDataTable();
 
-	getReviews();
+	getReviews(table);
 
 });
