@@ -41,6 +41,12 @@ var queries = {
         return queryString;
     },
 
+    getRecentOrganization: function () {
+        var queryString = 'SELECT id, name, register_date FROM organization WHERE  id = (SELECT MAX(id) FROM organization);'
+
+        return queryString;
+    },
+
     editOrganizations: function (payload) {
         var queryString = 'UPDATE organization SET name = \'' + payload.name +
                             '\' register_date = \'' + payload.registerDate +
@@ -87,9 +93,13 @@ var queries = {
     },
 
     createUser: function (payload) {
-        var queryString = 'INSERT INTO users ("username", "hashed_password") VALUES (\'' +
+        var queryString = 'INSERT INTO users (username, hashed_password, org_id, sup_id, first_name, last_name, display_name, is_admin) VALUES (\'' +
                             payload.username + '\', \'' +
-                            payload.password + '\');';
+                            payload.password + '\', ' +
+                            payload.orgID + ', null, \'' +
+                            payload.firstName + '\', \'' +
+                            payload.lastName + '\', \'' +
+                            payload.firstName + ' ' + payload.lastName + '\', ' + 'true);';
 
         return queryString;
     },

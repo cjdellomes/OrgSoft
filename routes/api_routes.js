@@ -39,8 +39,19 @@ var apiRoutes = [
         handler: Api.getOrganization
     },
     {
+        method: 'GET',
+        path: '/organization/recent',
+        config: {
+            auth: false
+        },
+        handler: Api.getRecentOrganization
+    },
+    {
         method: 'POST',
         path: '/organization/create',
+        config: {
+            auth: false
+        },
         handler: Api.createOrganization
     },
     {
@@ -62,9 +73,7 @@ var apiRoutes = [
         method: 'POST',
         path: '/users',
         config: {
-            validate: {
-                payload: Schema.newUser
-            }
+            auth: false
         },
         handler: Api.createUser
     },

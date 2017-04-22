@@ -35,6 +35,16 @@ var api = {
         });
     },
 
+    getRecentOrganization: function (request, reply) {
+        Service.getRecentOrganization(request.postgres, function (err, result) {
+            if (err) {
+                Respond.failedToGetRecentOrganization(reply, err);
+            } else {
+                Respond.getRecentOrganization(reply, result);
+            }
+        });
+    },
+
     editOrganization: function (request, reply) {
         Service.editOrganization(request.postgres, request.payload, function (err, result) {
             if (err) {

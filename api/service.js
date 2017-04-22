@@ -38,6 +38,15 @@ var service = {
         });
     },
 
+    getRecentOrganization: function (postgres, callback) {
+        Query.getRecentOrganization(postgres, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     editOrganization: function (postgres, payload, callback) {
         Query.editOrganization(postgres, payload, function (err, result) {
             if (err) {
@@ -109,7 +118,10 @@ var service = {
             }
             Query.createUser(postgres, {
                 username: payload.username,
-                password: hash
+                password: hash,
+                orgID: payload.orgID,
+                firstName: payload.firstName,
+                lastName: payload.lastName
             }, callback);
         });
     },

@@ -42,6 +42,20 @@ var respond = {
             result: result
         }).code(200);
     },
+    failedToGetRecentOrganization: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get most recent organization!",
+            error: err
+        }).code(500);
+    },
+    getRecentOrganization: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got most recent organization!",
+            result: result
+        }).code(200);
+    },
     failedToEditOrganization: function (reply, err) {
         reply({
             statusCode: 500,
