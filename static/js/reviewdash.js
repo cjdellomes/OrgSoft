@@ -8,7 +8,12 @@ $(function (event) {
 			},
 			paging: false,
 			dom: "Bfrtip",
-			buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+			buttons: ['copy', 'excel', 'pdf', 'csv', 'print'],
+			columnDefs: [ {
+				targets: -1,
+				data: null,
+				defaultContent: '<a href="review/history"><button type="button" class="btn btn-primary">Details</button></a>'
+			} ]
 		});
 
 		// On column text box change, search input and redraw datatable
@@ -110,5 +115,10 @@ $(function (event) {
 	var table = initiateDataTable();
 
 	getReviews(table);
+
+	table.on( 'click', 'button', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        alert(data[1]);
+    } );
 
 });

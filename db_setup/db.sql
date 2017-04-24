@@ -187,6 +187,7 @@ CREATE TABLE review (
   status varchar(25) NOT NULL
 );
 
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (1, 'N', 'Annual', '2016-01-01', '2015-01-31', false, true, -100, 'Future Review');
 INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (1, 'N', 'Annual', '2017-01-01', '2018-01-31', false, true, 200, 'Future Review');
 INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (2, 'N', 'Annual', '2017-02-01', '2018-02-28', false, true, 200, 'Future Review');
 INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (3, 'N', 'Annual', '2017-03-01', '2018-03-31', false, true, 200, 'Future Review');

@@ -9,6 +9,11 @@ $(function (event) {
 			paging: false,
 			dom: "Bfrtip",
 			buttons: ['copy', 'excel', 'pdf', 'csv', 'print'],
+			columnDefs: [ {
+				targets: -1,
+				data: null,
+				defaultContent: '<button type="button" class="btn btn-primary">Details</button>'
+			} ]
 		});
 
 		// On column text box change, search input and redraw datatable

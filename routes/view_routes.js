@@ -78,6 +78,19 @@ var viewRoutes = [
     },
 
     {
+        path: '/review/history',
+        method: 'GET',
+        config: {
+            auth: false
+        },
+        handler: function (req, res) {
+            res.view('reviewhistory.html', {
+                
+            });
+        }
+    },
+
+    {
         path: '/timecard',
         method: 'GET',
         config: {
