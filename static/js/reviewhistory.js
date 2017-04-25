@@ -117,7 +117,7 @@ $(function (event) {
 
 	table.on( 'click', 'i', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        alert(data[1]);
+        alert(data[0]);
     } );
 
 });

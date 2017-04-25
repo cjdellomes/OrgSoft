@@ -12,7 +12,7 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<a href="review-history"><button type="button" class="btn btn-primary">Details</button></a>'
+				defaultContent: '<a href="review-history"><button type="button" class="btn btn-primary">History</button></a>'
 			} ]
 		});
 
@@ -89,6 +89,7 @@ $(function (event) {
                 	nextReviewDate = nextReviewDate.getMonth() + 1 + "/" + nextReviewDate.getDate() + "/" + nextReviewDate.getFullYear();
 
                 	var row = table.row.add([
+                		row.id,
                 		row.flsa,
                 		row.display_name,
                 		row.supervisor,
@@ -118,7 +119,7 @@ $(function (event) {
 
 	table.on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        alert(data[1]);
+        alert(data[0]);
     } );
 
 });

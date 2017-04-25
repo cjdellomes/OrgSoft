@@ -249,7 +249,7 @@ var queries = {
     },
 
     getReviewDash: function () {
-        var queryString = 'SELECT flsa, a.display_name AS display_name, b.display_name AS supervisor, date, next_review_date, status, days_until_review FROM users a LEFT JOIN review ON a.id = review.user_id LEFT JOIN users b on a.sup_id = b.id WHERE days_until_review = (SELECT MAX(days_until_review) FROM review);';
+        var queryString = 'SELECT a.id, flsa, a.display_name AS display_name, b.display_name AS supervisor, date, next_review_date, status, days_until_review FROM users a LEFT JOIN review ON a.id = review.user_id LEFT JOIN users b on a.sup_id = b.id WHERE days_until_review = (SELECT MAX(days_until_review) FROM review);';
 
         return queryString;
     },
