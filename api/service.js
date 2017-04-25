@@ -314,7 +314,16 @@ var service = {
             }
             callback(undefined, result);
         });
-    }
+    },
+
+    getUserReviews: function (postgres, userID, callback) {
+        Query.getUserReviews(postgres, userID,  function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
 };
 
 module.exports = service;

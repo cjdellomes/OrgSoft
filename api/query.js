@@ -485,7 +485,23 @@ var query = {
                 return callback(undefined, result);
             });
         });
-    }
+    },
+    getUserReviews: function (postgres, userID, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.getUserReviews(userID), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
 };
 
 module.exports = query;

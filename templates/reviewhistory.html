@@ -25,16 +25,20 @@
 	<table class="table table-bordered table-responsive table-condensed" id="Table" name="Table" style="display:none">
 		<thead id="TableHeader" name="TableHeader">
 			<tr>
+				<th class="table-sort sorting">
+			        <input type="text" placeholder="Review ID" size="11">
+			        <p hidden>Review ID</p>
+			    </th>
 			    <th class="table-sort sorting">
 			        <input type="text" placeholder="Reviewer" size="11">
 			        <p hidden>Supervisor</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Review Date" size="10">
+			        <input type="text" placeholder="Review Date" size="12">
 			        <p hidden>Last Review</p>
 			    </th>
 			    <th class="table-sort sorting"> 
-			        <input type="text" placeholder="Next Review Date" size="10">
+			        <input type="text" placeholder="Next Review Date" size="15">
 			        <p hidden>Upcoming Reveiw</p>
 			    </th>
 			    <th class="table-sort sorting">
@@ -42,9 +46,10 @@
 			        <p hidden>Review Status</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Days Till Next Review" size="10">
+			        <input type="text" placeholder="Days Till Next" size="14">
 			        <p hidden>Days Until Review</p>
 			    </th>
+			    <th>Options</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -69,5 +74,6 @@
   <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 
+  <script type="text/babel" src="static/js/reviewhistory.js"></script>
   <script type="text/babel" src="static/js/topbutton.js"></script>
 {% include "components/_footer.html" %}

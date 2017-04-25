@@ -78,7 +78,7 @@ var viewRoutes = [
     },
 
     {
-        path: '/review/history',
+        path: '/review-history',
         method: 'GET',
         config: {
             auth: false

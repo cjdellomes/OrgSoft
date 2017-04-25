@@ -463,6 +463,20 @@ var respond = {
             result: result
         }).code(200);
     },
+    failedToGetUserReviews: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get user reviews",
+            error: err
+        }).code(500);
+    },
+    getUserReviews: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got user reviews",
+            result: result
+        }).code(200);
+    }
 };
 
 module.exports = respond;

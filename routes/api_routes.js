@@ -204,6 +204,11 @@ var apiRoutes = [
         method: 'GET',
         path: '/review/dash',
         handler: Api.getReviewDash
+    },
+    {
+        method: 'GET',
+        path: '/review/user/{userID}',
+        handler: Api.getUserReviews
     }
 ];
 

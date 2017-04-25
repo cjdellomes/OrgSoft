@@ -448,6 +448,16 @@ var api = {
                 Respond.getReviewDash(reply, result);
             }
         });
+    },
+
+    getUserReviews: function (request, reply) {
+        Service.getUserReviews(request.postgres, request.params.userID, function (err, result) {
+            if (err) {
+                Respond.failedToGetUserReviews(reply, err);
+            } else {
+                Respond.getUserReviews(reply, result);
+            }
+        });
     }
 };
 

@@ -12,7 +12,7 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<a href="review-history"><button type="button" class="btn btn-primary">Details</button></a>'
+				defaultContent: '<div class="col-xs-1"><a href="review-edit"><span title="Edit Employee"><i class="fa fa-pencil-square-o fa-2x"></i></span></a></div><div class="col-xs-1"><a href="review-delete"><span title="Delete Employee"><i class="fa fa-trash-o fa-2x"></i></span></a></div>'
 			} ]
 		});
 
@@ -60,7 +60,7 @@ $(function (event) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
             },
-            url: 'api/review/dash',
+            url: 'api/review/user/1',
             method: 'GET',
             success: function (data) {
                 console.log(data);
@@ -89,8 +89,7 @@ $(function (event) {
                 	nextReviewDate = nextReviewDate.getMonth() + 1 + "/" + nextReviewDate.getDate() + "/" + nextReviewDate.getFullYear();
 
                 	var row = table.row.add([
-                		row.flsa,
-                		row.display_name,
+                		row.id,
                 		row.supervisor,
                 		date,
                 		nextReviewDate,
@@ -116,7 +115,7 @@ $(function (event) {
 
 	getReviews(table);
 
-	table.on( 'click', 'button', function () {
+	table.on( 'click', 'i', function () {
         var data = table.row( $(this).parents('tr') ).data();
         alert(data[1]);
     } );
