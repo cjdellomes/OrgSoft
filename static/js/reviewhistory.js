@@ -12,7 +12,7 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<div class="col-xs-1"><a href="review-edit"><span title="Edit Employee"><i class="fa fa-pencil-square-o fa-2x"></i></span></a></div><div class="col-xs-1"><a href="review-delete"><span title="Delete Employee"><i class="fa fa-trash-o fa-2x"></i></span></a></div>'
+				defaultContent: '<div class="col-xs-1"><a><span title="Edit Employee"><i class="fa fa-pencil-square-o fa-2x"></i></span></a></div><div class="col-xs-1"><a><span title="Delete Employee"><i class="fa fa-trash-o fa-2x"></i></span></a></div>'
 			} ]
 		});
 
@@ -111,13 +111,55 @@ $(function (event) {
         });
 	}
 
+	var deleteReview = function (reviewID) {
+		$.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/review/delete/' + reviewID,
+            method: 'POST',
+            success: function (data) {
+                console.log(data);
+
+                if (!$.fn.DataTable.isDataTable('#Table')) {
+                    table = $('#Table').DataTable({
+						initComplete: function (settings, json) {
+						    $("#Table").show();
+						},
+						paging: false,
+						dom: "Bfrtip",
+						buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+					});
+                } else {
+                    table = $('#Table').DataTable();
+                }
+
+                table.rows().remove().draw();
+
+                getReviews(table);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+	}
+
 	var table = initiateDataTable();
 
 	getReviews(table);
 
 	table.on( 'click', 'i', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        localStorage.setItem("reviewDetailUserID", data[0]);
+        deleteReview(data[0])
     } );
 
 });
