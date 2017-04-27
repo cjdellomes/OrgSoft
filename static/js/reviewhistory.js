@@ -60,7 +60,7 @@ $(function (event) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
             },
-            url: 'api/review/user/1',
+            url: 'api/review/user/' + localStorage.getItem('reviewHistoryUserID'),
             method: 'GET',
             success: function (data) {
                 console.log(data);
@@ -117,7 +117,7 @@ $(function (event) {
 
 	table.on( 'click', 'i', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        alert(data[0]);
+        localStorage.setItem("reviewDetailUserID", data[0]);
     } );
 
 });

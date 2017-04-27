@@ -119,7 +119,7 @@ $(function (event) {
 
 	table.on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        alert(data[0]);
+        localStorage.setItem("reviewHistoryUserID", data[0]);
     } );
 
 });
