@@ -307,8 +307,8 @@ var service = {
         });
     },
 
-    getReviewDash: function (postgres, callback) {
-        Query.getReviewDash(postgres, function (err, result) {
+    getReviewDash: function (postgres, orgID, callback) {
+        Query.getReviewDash(postgres, orgID, function (err, result) {
             if (err) {
                 return callback(err);
             }

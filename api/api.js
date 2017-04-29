@@ -441,7 +441,7 @@ var api = {
     },
 
     getReviewDash: function (request, reply) {
-        Service.getReviewDash(request.postgres, function (err, result) {
+        Service.getReviewDash(request.postgres, request.params.orgID, function (err, result) {
             if (err) {
                 Respond.failedToGetReviewDash(reply, err);
             } else {

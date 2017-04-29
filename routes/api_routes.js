@@ -202,7 +202,7 @@ var apiRoutes = [
     },
     {
         method: 'GET',
-        path: '/review/dash',
+        path: '/review/dash/{orgID}',
         handler: Api.getReviewDash
     },
     {

@@ -93,6 +93,7 @@ CREATE TABLE organization (
 );
 
 INSERT INTO organization (name, register_date) VALUES ('OrgSoft', '2017-01-01');
+INSERT INTO organization (name, register_date) VALUES ('LMU', '2017-02-01');
 
 DROP TABLE IF EXISTS users;
 
@@ -112,8 +113,10 @@ CREATE TABLE users (
 INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, null, 'test', '$2a$10$DAInVRGKZJ4pmb64YDJxXe2zgt4N3/FbxHkhC23yv8Dwv0uHeov6u', 'John', 'Doe', 'John Doe', true);
 INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test1', '$2a$06$nEwCWSFpeBrSih3vaK8xEeeT7ONoVD/79a72xdY7SqLp22sAA4KqG', 'Steve', 'Smith', 'Steve Smith', false);
 INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test2', '$2a$06$0ZFrkk6fixf3qIWML32rquwTSayMI3JiVGg7bpuePvc.PlPiy3XlW', 'Adam', 'Doe', 'Adam Doe', false);
-INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'tes3', '$2a$06$k5IdDic3/4g3KugxIH3/qe9Fv1EWJZQHcctAwiF4N/45lSU6mGN.u', 'Owen', 'Levi', 'Owen Levi', false);
-INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'tes4', '$2a$06$agy2l3SUmPrrHSgVOkceu.suqIQVTo/Evxi/9Baur3pu90TvxWV4i', 'Bob', 'John', 'Bob John', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test3', '$2a$06$k5IdDic3/4g3KugxIH3/qe9Fv1EWJZQHcctAwiF4N/45lSU6mGN.u', 'Owen', 'Levi', 'Owen Levi', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (1, 1, 'test4', '$2a$06$agy2l3SUmPrrHSgVOkceu.suqIQVTo/Evxi/9Baur3pu90TvxWV4i', 'Bob', 'John', 'Bob John', false);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (2, null, 'test5', '$2a$06$DzKHJFZ7SjlosoEZSa3Zse5MxurqWV3JTwuRsn6i.hOntvvdu9PmC', 'Bob', 'John', 'Bob John', true);
+INSERT INTO users (org_id, sup_id, username, hashed_password, first_name, last_name, display_name, is_admin) VALUES (2, 6, 'test6', '$2a$06$DzKHJFZ7SjlosoEZSa3Zse5MxurqWV3JTwuRsn6i.hOntvvdu9PmC', 'Alan', 'Davis', 'Alan Davis', true);
 
 DROP TABLE IF EXISTS timecard;
 
@@ -187,9 +190,11 @@ CREATE TABLE review (
   status varchar(25) NOT NULL
 );
 
-INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (1, 'N', 'Annual', '2016-01-01', '2015-01-31', false, true, -100, 'Future Review');
-INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (1, 'N', 'Annual', '2017-01-01', '2018-01-31', false, true, 100, 'Future Review');
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (1, 'E', 'Annual', '2016-01-01', '2015-01-31', false, true, -100, 'Future Review');
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (1, 'E', 'Annual', '2017-01-01', '2018-01-31', false, true, 100, 'Future Review');
 INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (2, 'N', 'Annual', '2017-02-01', '2018-02-28', false, true, 200, 'Future Review');
 INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (3, 'N', 'Annual', '2017-03-01', '2018-03-31', false, true, 200, 'Future Review');
 INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (4, 'N', 'Annual', '2017-04-01', '2018-04-30', false, true, 200, 'Future Review');
 INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (5, 'N', 'Annual', '2017-05-01', '2018-05-31', false, true, 200, 'Future Review');
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (6, 'N', 'Annual', '2017-04-01', '2018-04-30', false, true, 200, 'Future Review');
+INSERT INTO review (user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status) VALUES (7, 'N', 'Annual', '2017-05-01', '2018-05-31', false, true, 200, 'Future Review');

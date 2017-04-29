@@ -12,7 +12,7 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<div class="col-xs-1"><a><span title="Edit Review"><i class="fa fa-pencil-square-o fa-2x"></i></span></a></div><div class="col-xs-1"><a><span title="Delete Review"><i class="fa fa-trash-o fa-2x"></i></span></a></div>'
+				defaultContent: '<div class="col-xs-1"><span title="Edit Review"><i class="fa fa-pencil-square-o fa-2x"></i></span></div><div class="col-xs-1"><span title="Delete Review"><i class="fa fa-trash-o fa-2x"></i></span></div>'
 			} ]
 		});
 
@@ -51,6 +51,33 @@ $(function (event) {
 
 		return table;
 	}
+
+    var getUser = function (userID) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/users/get/' + userID,
+            method: 'GET',
+            success: function (data) {
+                console.log(data);
+
+                $('#employee-name').text(data.result.rows[0].display_name);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
 
 	var getReviews = function (table) {
 		$.ajax({
@@ -152,6 +179,8 @@ $(function (event) {
 
         });
 	}
+
+    getUser(localStorage.getItem('reviewHistoryUserID'));
 
 	var table = initiateDataTable();
 

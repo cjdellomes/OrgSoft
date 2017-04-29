@@ -156,7 +156,7 @@ var query = {
                 return callback(err);
             }
 
-            client.query(Queries.getTimecard(userID), function (err, result) {
+            client.query(Queries.getUser(userID), function (err, result) {
                 done();
                 if (err) {
                     return callback(err);
@@ -470,13 +470,13 @@ var query = {
             });
         });
     },
-    getReviewDash: function (postgres, callback) {
+    getReviewDash: function (postgres, orgID, callback) {
         postgres.connect(function (err, client, done) {
             if (err) {
                 return callback(err);
             }
 
-            client.query(Queries.getReviewDash(), function (err, result) {
+            client.query(Queries.getReviewDash(orgID), function (err, result) {
                 done();
                 if (err) {
                     return callback(err);

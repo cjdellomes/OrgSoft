@@ -87,7 +87,7 @@ var queries = {
     },
 
     getUser: function (userID) {
-        var queryString = 'SELECT id, username, hashed_password, first_name, last_name, display_name, is_admin FROM users WHERE id = ' + userID + ';';
+        var queryString = 'SELECT id, first_name, last_name, display_name, is_admin FROM users WHERE id = ' + userID + ';';
 
         return queryString;
     },
@@ -201,7 +201,7 @@ var queries = {
     },
 
     getReviews: function () {
-        var queryString = 'SELECT user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status FROM review;';
+        var queryString = 'SELECT user_id, flsa, type, date, next_review_date, late, confirmed, days_until_review, status FROM;';
 
         return queryString;
     },
@@ -248,15 +248,18 @@ var queries = {
         return queryString;
     },
 
-    getReviewDash: function () {
+    getReviewDash: function (orgID) {
         var queryString = `WITH CTE1 AS 
             (SELECT a.id, flsa, a.display_name AS display_name, b.display_name AS supervisor, MAX(date) AS date, MAX(next_review_date) as next_review_date, status, MAX(days_until_review) AS days_until_review 
             FROM users a LEFT JOIN review ON a.id = review.user_id LEFT JOIN users b on a.sup_id = b.id
+            WHERE a.org_id = ` + orgID + `
             GROUP BY a.id, flsa, a.display_name, b.display_name, date, next_review_Date, status, days_until_review, review.id HAVING review.id = MAX(review.id)),
             CTE2 AS
             (SELECT distinct a.* FROM CTE1 a LEFT OUTER JOIN CTE1 b ON a.id = b.id AND a.days_until_review < b.days_until_review WHERE b.id IS NULL)
 
             SELECT * FROM CTE2`;
+
+        console.log(queryString);
 
         return queryString;
     },

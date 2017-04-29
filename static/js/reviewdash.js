@@ -52,7 +52,35 @@ $(function (event) {
 		return table;
 	}
 
-	var getReviews = function (table) {
+	var getUser = function (userID, table) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/users/get/' + userID,
+            method: 'GET',
+            success: function (data) {
+                console.log(data);
+
+                var orgID = data.result.rows[0].id
+                getReviews(orgID, table);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
+	var getReviews = function (orgID, table) {
 		$.ajax({
             xhrFields: {
                 withCredentials: true
@@ -60,7 +88,7 @@ $(function (event) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
             },
-            url: 'api/review/dash',
+            url: 'api/review/dash/' + orgID,
             method: 'GET',
             success: function (data) {
                 console.log(data);
@@ -115,7 +143,7 @@ $(function (event) {
 
 	var table = initiateDataTable();
 
-	getReviews(table);
+	getUser(localStorage.getItem('userID'), table);
 
 	table.on( 'click', 'button', function () {
         var data = table.row( $(this).parents('tr') ).data();
