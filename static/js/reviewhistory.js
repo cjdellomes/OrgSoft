@@ -12,7 +12,7 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<div class="col-xs-1"><a><span title="Edit Employee"><i class="fa fa-pencil-square-o fa-2x"></i></span></a></div><div class="col-xs-1"><a><span title="Delete Employee"><i class="fa fa-trash-o fa-2x"></i></span></a></div>'
+				defaultContent: '<div class="col-xs-1"><a><span title="Edit Review"><i class="fa fa-pencil-square-o fa-2x"></i></span></a></div><div class="col-xs-1"><a><span title="Delete Review"><i class="fa fa-trash-o fa-2x"></i></span></a></div>'
 			} ]
 		});
 
