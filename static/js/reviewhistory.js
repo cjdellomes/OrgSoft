@@ -282,8 +282,19 @@ $(function (event) {
         var userID = localStorage.getItem('reviewHistoryUserID');
         var date = $('#review-date').val();
         var nextReviewDate = $('#next-review-date').val();
-        var daysUntilReview = 150;
-        var status = 'Future Review';
+        var today = new Date().setHours(0, 0, 0, 0);
+        var daysUntilReview = dayDiff(today, parseDate(nextReviewDate));
+        var status;
+
+        if (daysUntilReview > 62 ) {
+            status = 'Future Review';
+        } else if (daysUntilReview > 31) {
+            status = 'Due Within 2 Months';
+        } else if (daysUntilReview >= 0) {
+            status = 'Due Within A Month';
+        } else {
+            status = 'Past Due';
+        }
 
         var data = {
             id: reviewID,
@@ -294,9 +305,16 @@ $(function (event) {
             status: status
         };
 
-        console.log(data);
-
         return data;
+    }
+
+    var parseDate = function (date) {
+        var mdy = date.split('/');
+        return new Date(mdy[2], mdy[0] - 1, mdy[1]);
+    }
+
+    var dayDiff = function (startDate, endDate) {
+        return Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
     }
 
     var populateModal = function (data) {
