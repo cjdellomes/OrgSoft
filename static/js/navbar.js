@@ -16,6 +16,7 @@ $(function () {
 
           $('#bubbles').show();
           $('#register-panel').hide();
+          $('.nav-link').show();
           login.hide();
           alert.show();
           alertList.empty();
@@ -26,6 +27,7 @@ $(function () {
 
           $('#bubbles').hide();
           $('#register-panel').show();
+          $('.nav-link').hide();
           login.show();
           alert.hide();
           alertList.empty();
@@ -33,7 +35,7 @@ $(function () {
       }
 
       $('#logout').click(function () {
-          localStorage.removeItem("authorization");
+          localStorage.clear();
           var rawWords = window.location.href.split("/");
           window.location = rawWords[0] + "//" + rawWords[2] + "/";
       });
