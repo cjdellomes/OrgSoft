@@ -111,10 +111,22 @@ $(function (event) {
                 table.rows().remove().draw();
 
                 rows.forEach(function (row) {
+                    var today = new Date().setHours(0, 0, 0, 0);
                 	var date = new Date(row.date);
                 	var nextReviewDate = new Date(row.next_review_date);
                 	date = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
                 	nextReviewDate = nextReviewDate.getMonth() + 1 + "/" + nextReviewDate.getDate() + "/" + nextReviewDate.getFullYear();
+                    var daysUntilReview = dayDiff(today, parseDate(nextReviewDate));
+                    var status;
+                    if (daysUntilReview > 62 ) {
+                        status = 'Future Review';
+                    } else if (daysUntilReview > 31) {
+                        status = 'Due Within 2 Months';
+                    } else if (daysUntilReview >= 0) {
+                        status = 'Due Within A Month';
+                    } else {
+                        status = 'Past Due';
+                    }
 
                 	var row = table.row.add([
                 		row.id,
@@ -123,8 +135,8 @@ $(function (event) {
                 		row.supervisor,
                 		date,
                 		nextReviewDate,
-                		row.status,
-                		row.days_until_review,
+                		status,
+                		daysUntilReview,
                 		null
                 	]).draw(false);
                 });
@@ -140,6 +152,15 @@ $(function (event) {
 
         });
 	}
+
+    var parseDate = function (date) {
+        var mdy = date.split('/');
+        return new Date(mdy[2], mdy[0] - 1, mdy[1]);
+    }
+
+    var dayDiff = function (startDate, endDate) {
+        return Math.round((endDate - startDate) / (1000 * 60 * 60 * 24));
+    }
 
 	var table = initiateDataTable();
 
