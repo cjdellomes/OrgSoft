@@ -65,7 +65,7 @@ $(function (event) {
             success: function (data) {
                 console.log(data);
 
-                var orgID = data.result.rows[0].id
+                var orgID = data.result.rows[0].org_id
                 getReviews(orgID, table);
             },
             error: function (xhr) {

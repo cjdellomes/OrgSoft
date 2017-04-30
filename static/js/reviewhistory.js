@@ -12,7 +12,7 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<div class="col-xs-1"><span title="Edit Review"><i class="fa fa-pencil-square-o fa-2x"></i></span></div><div class="col-xs-1"><span title="Delete Review"><i class="fa fa-trash-o fa-2x"></i></span></div>'
+				defaultContent: '<div class="col-xs-1"><a><span title="Edit Review"><i class="fa fa-pencil-square-o fa-2x edit-review"></i></span></a></div><div class="col-xs-1"><a><span title="Delete Review"><i class="fa fa-trash-o fa-2x delete-review"></i></span></a></div>'
 			} ]
 		});
 
@@ -66,6 +66,7 @@ $(function (event) {
                 console.log(data);
 
                 $('#employee-name').text(data.result.rows[0].display_name);
+                $('#employee-flsa').text('FLSA: ' + data.result.rows[0].flsa);
             },
             error: function (xhr) {
                 console.log(xhr);
@@ -180,6 +181,71 @@ $(function (event) {
         });
 	}
 
+    var createReview = function (data) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/review/create',
+            method: 'POST',
+            data: data,
+            success: function (data) {
+                console.log(data);
+
+                if (!$.fn.DataTable.isDataTable('#Table')) {
+                    table = $('#Table').DataTable({
+                        initComplete: function (settings, json) {
+                            $("#Table").show();
+                        },
+                        paging: false,
+                        dom: "Bfrtip",
+                        buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+                    });
+                } else {
+                    table = $('#Table').DataTable();
+                }
+
+                table.rows().remove().draw();
+
+                getReviews(table);
+
+                $('#add-review-modal').modal('hide');
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
+    var calculateReviewData = function () {
+        var userID = localStorage.getItem('reviewHistoryUserID');
+        var date = $('#review-date').val();
+        var nextReviewDate = $('#next-review-date').val();
+        var daysUntilReview = 150;
+        var status = 'Future Review';
+
+        var data = {
+            userID: userID,
+            date: date,
+            nextReviewDate: nextReviewDate,
+            daysUntilReview: daysUntilReview,
+            status: status
+        };
+
+        console.log(data);
+
+        return data;
+    }
+
     getUser(localStorage.getItem('reviewHistoryUserID'));
 
 	var table = initiateDataTable();
@@ -188,7 +254,20 @@ $(function (event) {
 
 	table.on( 'click', 'i', function () {
         var data = table.row( $(this).parents('tr') ).data();
-        deleteReview(data[0])
+        if ($(this).hasClass('delete-review')) {
+            deleteReview(data[0])
+        }
     } );
+
+    $('#cancel-review').click(function () {
+        $('#add-review-modal').modal('hide');
+    });
+
+    $('#submit-review').click(function () {
+        createReview(calculateReviewData());
+    });
+
+    $("#review-date").datepicker();
+    $("#next-review-date").datepicker();
 
 });

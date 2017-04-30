@@ -3,10 +3,42 @@
 {% include "components/_navbar.html" %}
 
 <br>
-<h2><div id="employee-name"></div></h2>
+<div class="row">
+	<h2><div id="employee-name" class="col-md-10"></div></h2>
+	<h2><div id="employee-flsa" class="col-md-2"></div></h2>
+</div>
 <h2>Review History</h2>
 <br>
-<div><button id="add-file" class="btn btn-success">Add New Review <i class="fa fa-plus" aria-hidden="true"></i></button></div>
+<div><button id="add-file" class="btn btn-success" data-toggle="modal" data-target="#add-review-modal">Add New Review <i class="fa fa-plus" aria-hidden="true"></i></button></div>
+<div class="modal fade" id="add-review-modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        	<div class="modal-header">
+            	Add Review
+        	</div>
+        	<div class="modal-body">
+            	<div class="row">
+            		<div class="form-group">
+            		    <label class="control-label col-md-2">Review Date</label>
+            		    <div class="col-md-4">
+            		        <input type="text" class="form-control" name="review-date" id="review-date" />
+            		    </div>
+            		</div>
+            		<div class="form-group">
+            		    <label class="control-label col-md-2">Next Review Date</label>
+            		    <div class="col-md-4">
+            		        <input type="text" class="form-control" name="next-review-date" id="next-review-date" />
+            		    </div>
+            		</div>
+            	</div>
+            	<br>
+
+        		<button class="btn btn-outline-primary" type="button" id="submit-review">Submit</button>
+        		<button class="btn btn-outline-secondary" type="button" id="cancel-review" style="float: right;">Cancel</button>
+    		</div>
+    	</div>
+	</div>
+</div>
 <br>
 <div class="card">
 	<div class="card-header">
@@ -66,7 +98,9 @@
 {% include "components/_basescript.html" %}
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="static/css/format.css" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 
+  <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
