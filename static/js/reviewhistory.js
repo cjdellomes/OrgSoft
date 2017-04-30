@@ -213,6 +213,57 @@ $(function (event) {
                 getReviews(table);
 
                 $('#add-review-modal').modal('hide');
+                $('#review-id').html('');
+                $('#review-date').val('');
+                $('#next-review-date').val('');
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
+    var editReview = function (data) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/review/edit',
+            method: 'POST',
+            data: data,
+            success: function (data) {
+                console.log(data);
+
+                if (!$.fn.DataTable.isDataTable('#Table')) {
+                    table = $('#Table').DataTable({
+                        initComplete: function (settings, json) {
+                            $("#Table").show();
+                        },
+                        paging: false,
+                        dom: "Bfrtip",
+                        buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+                    });
+                } else {
+                    table = $('#Table').DataTable();
+                }
+
+                table.rows().remove().draw();
+
+                getReviews(table);
+
+                $('#add-review-modal').modal('hide');
+                $('#review-id').html('');
+                $('#review-date').val('');
+                $('#next-review-date').val('');
             },
             error: function (xhr) {
                 console.log(xhr);
@@ -227,6 +278,7 @@ $(function (event) {
     }
 
     var calculateReviewData = function () {
+        var reviewID = $('#review-id').text();
         var userID = localStorage.getItem('reviewHistoryUserID');
         var date = $('#review-date').val();
         var nextReviewDate = $('#next-review-date').val();
@@ -234,6 +286,7 @@ $(function (event) {
         var status = 'Future Review';
 
         var data = {
+            id: reviewID,
             userID: userID,
             date: date,
             nextReviewDate: nextReviewDate,
@@ -246,6 +299,12 @@ $(function (event) {
         return data;
     }
 
+    var populateModal = function (data) {
+        $('#review-id').text(data.reviewID);
+        $('#review-date').val(data.date);
+        $('#next-review-date').val(data.nextReviewDate);
+    }
+
     getUser(localStorage.getItem('reviewHistoryUserID'));
 
 	var table = initiateDataTable();
@@ -256,15 +315,38 @@ $(function (event) {
         var data = table.row( $(this).parents('tr') ).data();
         if ($(this).hasClass('delete-review')) {
             deleteReview(data[0])
+        } else {
+            var dates = {
+                reviewID: data[0],
+                date: data[2],
+                nextReviewDate: data[3]
+            }
+            populateModal(dates);
+            $('#add-review-modal').modal('show');
         }
     } );
 
+    $('#add-review-modal').on('hidden.bs.modal', function () {
+        $('#review-id').html('');
+        $('#review-date').val('');
+        $('#next-review-date').val('');
+    })
+
+    $('#add-review-button').click(function () {
+        $('#review-id').html('');
+    });
+
     $('#cancel-review').click(function () {
+        $('#review-id').html('');
         $('#add-review-modal').modal('hide');
     });
 
     $('#submit-review').click(function () {
-        createReview(calculateReviewData());
+        if ($('#review-id').text() == '') {
+            createReview(calculateReviewData());
+        } else {
+            editReview(calculateReviewData());
+        }
     });
 
     $("#review-date").datepicker();

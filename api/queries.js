@@ -225,12 +225,14 @@ var queries = {
     },
 
     editReview: function (payload) {
-        var queryString = 'UPDATE review SET user_id - \'' + payload.userID +
-                            '\' date = \'' + payload.date +
-                            '\' next_review_Date = \'' + payload.nextReviewDate +
-                            '\' daysUntilReview = \'' + payload.daysUntilReview +
-                            '\' status = \'' + payload.status +
+        var queryString = 'UPDATE review SET user_id = \'' + payload.userID +
+                            '\', date = \'' + payload.date +
+                            '\', next_review_date = \'' + payload.nextReviewDate +
+                            '\', days_until_review = \'' + payload.daysUntilReview +
+                            '\', status = \'' + payload.status +
                             '\' WHERE id = ' + payload.id + ';';
+
+        console.log(queryString);
 
         return queryString;
     },
