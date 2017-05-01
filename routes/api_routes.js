@@ -125,7 +125,7 @@ var apiRoutes = [
     },
     {
         method: 'GET',
-        path: '/timecard',
+        path: '/timecard/dash/{orgID}',
         handler: Api.getTimecards
     },
     {

@@ -235,13 +235,13 @@ var query = {
         });
     },
 
-    getTimecards: function (postgres, callback) {
+    getTimecards: function (postgres, orgID, callback) {
         postgres.connect(function (err, client, done) {
             if (err) {
                 return callback(err);
             }
 
-            client.query(Queries.getTimecards(), function (err, result) {
+            client.query(Queries.getTimecards(orgID), function (err, result) {
                 done();
                 if (err) {
                     return callback(err);

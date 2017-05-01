@@ -12,7 +12,7 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<button type="button" class="btn btn-primary">Details</button>'
+				defaultContent: '<a href="timecard-details"><button type="button" class="btn btn-primary">History</button></a>'
 			} ]
 		});
 
@@ -52,7 +52,35 @@ $(function (event) {
 		return table;
 	}
 
-	var getTimecards = function (table) {
+	var getUser = function (userID, table) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/users/get/' + userID,
+            method: 'GET',
+            success: function (data) {
+                console.log(data);
+
+                var orgID = data.result.rows[0].org_id
+                getTimecards(orgID, table);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
+	var getTimecards = function (orgID, table) {
 		$.ajax({
             xhrFields: {
                 withCredentials: true
@@ -60,7 +88,7 @@ $(function (event) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
             },
-            url: 'api/timecard',
+            url: 'api/timecard/dash/' + orgID,
             method: 'GET',
             success: function (data) {
                 console.log(data);
@@ -112,6 +140,6 @@ $(function (event) {
 
 	var table = initiateDataTable();
 
-	getTimecards(table);
+	getUser(localStorage.getItem('userID'), table);
 
 });

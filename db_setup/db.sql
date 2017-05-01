@@ -138,6 +138,7 @@ INSERT INTO timecard (user_id, start_date, end_date, employee_signed, admin_sign
 INSERT INTO timecard (user_id, start_date, end_date, employee_signed, admin_signed) VALUES (3, '2017-01-15', '2017-01-29', true, true);
 INSERT INTO timecard (user_id, start_date, end_date, employee_signed, admin_signed) VALUES (4, '2017-01-01', '2017-01-14', true, true);
 INSERT INTO timecard (user_id, start_date, end_date, employee_signed, admin_signed) VALUES (4, '2017-01-15', '2017-01-29', true, true);
+INSERT INTO timecard (user_id, start_date, end_date, employee_signed, admin_signed) VALUES (7, '2017-01-15', '2017-01-29', true, true);
 
 DROP TABLE IF EXISTS time_record;
 

@@ -130,8 +130,8 @@ var queries = {
         return queryString;
     },
 
-    getTimecards: function () {
-        var queryString = 'SELECT user_id, start_date, end_date, employee_signed, admin_signed FROM timecard;';
+    getTimecards: function (orgID) {
+        var queryString = 'SELECT user_id, start_date, end_date, employee_signed, admin_signed FROM timecard LEFT JOIN users ON timecard.user_id = users.id WHERE users.org_id = ' + orgID;
 
         return queryString;
     },

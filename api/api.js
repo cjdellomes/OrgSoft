@@ -291,7 +291,7 @@ var api = {
     },
 
     getTimecards: function (request, reply) {
-        Service.getTimecards(request.postgres, function (err, result) {
+        Service.getTimecards(request.postgres, request.params.orgID, function (err, result) {
             if (err) {
                 Respond.failedToGetTimecards(reply, err);
             } else {

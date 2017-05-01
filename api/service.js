@@ -181,8 +181,8 @@ var service = {
         Query.deleteUser(postgres, userId, callback);
     },
 
-    getTimecards: function (postgres, callback) {
-        Query.getTimecards(postgres, function (err, result) {
+    getTimecards: function (postgres, orgID, callback) {
+        Query.getTimecards(postgres, orgID, function (err, result) {
             if (err) {
                 return callback(err);
             }
