@@ -323,6 +323,20 @@ var respond = {
             result: result
         }).code(200);
     },
+    failedToGetTimeRecords: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get time records!",
+            error: err
+        }).code(500);
+    },
+    getTimeRecords: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got time records!",
+            result: result
+        }).code(200);
+    },
     failedToUploadFile: function (reply, err) {
         reply({
             statusCode: 500,

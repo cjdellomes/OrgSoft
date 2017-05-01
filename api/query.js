@@ -320,6 +320,23 @@ var query = {
         });
     },
 
+    getTimeRecords: function (postgres, timecardID, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.getTimeRecords(timecardID), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
     uploadFile: function (postgres, payload, callback) {
         postgres.connect(function (err, client, done) {
             if (err) {

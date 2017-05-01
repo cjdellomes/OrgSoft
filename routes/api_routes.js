@@ -149,6 +149,11 @@ var apiRoutes = [
         handler: Api.deleteTimecard
     },
     {
+        method: 'GET',
+        path: '/timerecord/{userID}',
+        handler: Api.getTimeRecords
+    },
+    {
         method: 'POST',
         path: '/files',
         config: {

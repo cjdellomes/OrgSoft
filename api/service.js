@@ -226,6 +226,15 @@ var service = {
         });
     },
 
+    getTimeRecords: function (postgres, timecardID, callback) {
+        Query.getTimeRecords(postgres, timecardID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     uploadFile: function (postgres, payload, callback) {
         Query.uploadFile(postgres, payload, function (err, result) {
             if (err) {

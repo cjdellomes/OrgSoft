@@ -131,7 +131,7 @@ var queries = {
     },
 
     getTimecards: function (orgID) {
-        var queryString = 'SELECT user_id, start_date, end_date, employee_signed, admin_signed FROM timecard LEFT JOIN users ON timecard.user_id = users.id WHERE users.org_id = ' + orgID;
+        var queryString = 'SELECT timecard.id, user_id, start_date, end_date, employee_signed, admin_signed FROM timecard LEFT JOIN users ON timecard.user_id = users.id WHERE users.org_id = ' + orgID;
 
         return queryString;
     },
@@ -148,7 +148,7 @@ var queries = {
     },
 
     getTimecard: function (cardID) {
-        var queryString = 'SELECT user_id, start_date, end_date, employee_signed, admin_signed FROM timecard WHERE id = ' +
+        var queryString = 'SELECT id, user_id, start_date, end_date, employee_signed, admin_signed FROM timecard WHERE id = ' +
                             cardID + ';';
 
         return queryString;
@@ -167,6 +167,12 @@ var queries = {
 
     deleteTimecard: function (cardID) {
         var queryString = 'DELETE FROM timecard WHERE id = ' + cardID + ';';
+
+        return queryString;
+    },
+
+    getTimeRecords: function (timecardID) {
+        var queryString = 'SELECT time_record.id, date, time, type FROM time_record LEFT JOIN timecard ON timecard.id = time_record.timecard_id WHERE timecard.id = ' + timecardID;
 
         return queryString;
     },

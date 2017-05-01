@@ -102,6 +102,19 @@ var viewRoutes = [
             });
         }
     },
+
+    {
+        path: '/timecard-details',
+        method: 'GET',
+        config: {
+            auth: false
+        },
+        handler: function (req, res) {
+            res.view('timecarddetails.html', {
+                
+            });
+        }
+    },
 ];
 
 module.exports = viewRoutes;

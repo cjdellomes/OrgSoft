@@ -340,6 +340,16 @@ var api = {
         });
     },
 
+    getTimeRecords: function (request, reply) {
+        Service.getTimecards(request.postgres, request.params.timecardID, function (err, result) {
+            if (err) {
+                Respond.failedToGetTimeRecords(reply, err);
+            } else {
+                Respond.getTimeRecords(reply, result);
+            }
+        });
+    },
+
     uploadFile: function (request, reply) {
         Service.uploadFile(request.postgres, request.payload, function (err, result) {
             if (err) {

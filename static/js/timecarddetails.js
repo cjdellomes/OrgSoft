@@ -1,5 +1,5 @@
 $(function (event) {
-
+	
 	var initiateDataTable = function () {
 
 		var table = $('#Table').DataTable({
@@ -12,7 +12,7 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<a href="timecard-details"><button type="button" class="btn btn-primary">History</button></a>'
+				defaultContent: '<div class="col-xs-1"><a><span title="Edit Review"><i class="fa fa-pencil-square-o fa-2x edit-review"></i></span></a></div><div class="col-xs-1"><a><span title="Delete Review"><i class="fa fa-trash-o fa-2x delete-review"></i></span></a></div>'
 			} ]
 		});
 
@@ -52,7 +52,7 @@ $(function (event) {
 		return table;
 	}
 
-	var getUser = function (userID, table) {
+	var getUser = function (userID) {
         $.ajax({
             xhrFields: {
                 withCredentials: true
@@ -65,8 +65,7 @@ $(function (event) {
             success: function (data) {
                 console.log(data);
 
-                var orgID = data.result.rows[0].org_id
-                getTimecards(orgID, table);
+                $('#employee-name').text(data.result.rows[0].display_name);
             },
             error: function (xhr) {
                 console.log(xhr);
@@ -80,7 +79,7 @@ $(function (event) {
         });
     }
 
-	var getTimecards = function (orgID, table) {
+    var getTimeRecords = function (table) {
 		$.ajax({
             xhrFields: {
                 withCredentials: true
@@ -88,7 +87,7 @@ $(function (event) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
             },
-            url: 'api/timecard/dash/' + orgID,
+            url: 'api/timerecord/' + localStorage.getItem('timecardID'),
             method: 'GET',
             success: function (data) {
                 console.log(data);
@@ -102,7 +101,7 @@ $(function (event) {
 						},
 						paging: false,
 						dom: "Bfrtip",
-						buttons: ['copy', 'excel', 'pdf', 'csv', 'print'],
+						buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
 					});
                 } else {
                     table = $('#Table').DataTable();
@@ -111,18 +110,13 @@ $(function (event) {
                 table.rows().remove().draw();
 
                 rows.forEach(function (row) {
-                	var startDate = new Date(row.start_date);
-                	var endDate = new Date(row.end_date);
-                	startDate = startDate.getMonth() + 1 + "/" + startDate.getDate() + "/" + startDate.getFullYear();
-                	endDate = endDate.getMonth() + 1 + "/" + endDate.getDate() + "/" + endDate.getFullYear();
+                	var date = row.date.getMonth() + 1 + "/" + row.date.getDate() + "/" + row.date.getFullYear();
 
                 	var row = table.row.add([
                 		row.id,
-                		row.user_id,
-                		startDate,
-                		endDate,
-                		row.employee_signed,
-                		row.admin_signed,
+                		date,
+                		row.time,
+                		row.type,
                 		null
                 	]).draw(false);
                 });
@@ -141,11 +135,6 @@ $(function (event) {
 
 	var table = initiateDataTable();
 
-	getUser(localStorage.getItem('userID'), table);
-
-	table.on( 'click', 'button', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        localStorage.setItem("timecardID", data[0]);
-    } );
+	getTimeRecords(table);
 
 });

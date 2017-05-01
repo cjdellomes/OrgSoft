@@ -3,8 +3,10 @@
 {% include "components/_navbar.html" %}
 
 <br>
-<h2>Timecards</h2>
-<br>
+<div class="row">
+	<h2><div id="employee-name" class="col-md-10"></div></h2>
+</div>
+<h2>Timecard Details</h2>
 <div class="card">
 	<div class="card-header">
 		<div class="row">
@@ -26,30 +28,21 @@
 		<thead id="TableHeader" name="TableHeader">
 			<tr>
 				<th class="table-sort sorting">
-			        <input type="text" placeholder="Timecard ID" size="11">
-			        <p hidden>Timecard ID</p>
-			    </th>
-				<th class="table-sort sorting">
-			        <input type="text" placeholder="User ID" size="11">
-			        <p hidden>User ID</p>
+			        <input type="text" placeholder="Time Record ID" size="11">
+			        <p hidden>Time Record ID</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Start Date" size="17">
-			        <p hidden>Start Date</p>
+			        <input type="text" placeholder="Date" size="11">
+			        <p hidden>Date</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="End Date" size="13">
-			        <p hidden>Employee</p>
+			        <input type="text" placeholder="Time" size="12">
+			        <p hidden>Time</p>
 			    </th>
-			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Employee Signed" size="15">
-			        <p hidden>Employee Signed</p>
+			    <th class="table-sort sorting"> 
+			        <input type="text" placeholder="Type" size="15">
+			        <p hidden>Type</p>
 			    </th>
-			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Admin Signed" size="12">
-			        <p hidden>Admin Signed</p>
-			    </th>
-			    <th>Details</th>
 			</tr>
 		</thead>
 		<tbody>
@@ -63,7 +56,9 @@
 {% include "components/_basescript.html" %}
   <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
   <link rel="stylesheet" type="text/css" href="static/css/format.css" />
+  <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 
+  <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
@@ -74,6 +69,6 @@
   <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
   <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 
-  <script type="text/babel" src="static/js/timecarddash.js"></script>
-  <script type="text/babel" src="static/js/topbutton.js"></script>
+  <script type="text/babel" src="static/js/timecarddetails.js"></script>
+
 {% include "components/_footer.html" %}
