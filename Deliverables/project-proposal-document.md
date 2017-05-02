@@ -1,6 +1,6 @@
-#OrgSoft Project Proposal Document
+# OrgSoft Project Proposal Document
 
-##Description
+## Description
 
 In order for a company to perform well in its respective market, the organization must be comprised of effective professionals. With a team of skilled individuals, a company has a clear edge over competitors who lack such efficient workers. Human resources management, that is the management of an organization's people, is a critical component to building, maintaining, and growing a company's number of employees along with their skills and professional fulfillment. To meet this demand, a human resources department primarily concerns itself with the multiple facets of employment such as labor law compliance, administration of employee benefits, performance reviews, as well as recruitment and termination. In order for a human resources department to maintain the effectiveness of its company's employees, the department itself should also be effective in performing its tasks. As such, there exists a demand for tools and solutions meant to assist human resources departments in their day to day operations.
 
@@ -8,7 +8,7 @@ OrgSoft will be a software solution to meet that need and provide effective empl
 
 The system will maintain data using a relational database, most likely MySQL or PostgreSQL. The front end will consist of HTML, CSS, and Javascript. The backend will be a web API constructed with node.js. Since it will be web based, the application will require a device, such as a computer or phone, that has internet access and a web browser. Test code and documentation will be developed alongside the application to ensure the system runs as expected and is simple to both understand and expand upon. The end users of the system will be both the company's human resources administration as well as the other employees of the company, with separate views and capabilities within the application. In order to ensure employees are able to effectively understand and use the system, the application front end will be intuitive and human friendly.
 
-##Justification
+## Justification
 
 This project is an opportunity to both apply and expand knowledge gained through the LMU Computer Science curriculum. The development of the project will involve skills learned in a multitude of classes, including Interaction Design, Databases, Data Structures & Algorithms, Statistics, and Programming Languages. By building a visually appealing and easily communicative front end, we are applying our understanding of user interface design from Interaction Design. Efficient design and implementation of the database meant to store system data along with business logic meant to serve the data will relate to LMU's Databases and Data Structures & Algorithms classes respectively. To visually represent key performance indicators, such as employee review compliance, skills in Statistics will be demonstrated and expanded upon. Lastly, coding in both familiar and unfamiliar languages using best practices will grow skills acquired from Programming Languages.
 
