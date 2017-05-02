@@ -179,6 +179,32 @@ var queries = {
         return queryString;
     },
 
+    createTimeRecord: function (payload) {
+        var queryString = 'INSERT INTO time_record (timecard_id, date, time, type) VALUES (\'' +
+                            payload.timecardID + '\' \'' +
+                            payload.date + '\ \'' +
+                            payload.time + '\ \'' +
+                            payload.type + '\');';
+
+        return queryString;
+    },
+
+    editTimeRecord: function (payload) {
+        var queryString = 'UPDATE time_record SET timecard_id = \'' + payload.timecardID +
+                            '\' date = \'' + payload.date +
+                            '\' time = \'' + payload.time +
+                            '\' type = \'' + payload.type +
+                            '\' WHERE id = ' + payload.id + ';';
+
+        return queryString;
+    },
+
+    deleteTimeRecord: function (recordID) {
+        var queryString = 'DELETE FROM time_record WHERE id = ' + recordID + ';';
+
+        return queryString;
+    },
+
     uploadFile: function (payload) {
         var queryString = 'INSERT INTO file (client_id, name, type, date, base_64_string) VALUES (\'' +
                             payload.clientID + '\', \'' +

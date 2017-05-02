@@ -350,6 +350,36 @@ var api = {
         });
     },
 
+    createTimeRecord: function (request, reply) {
+        Service.createTimeRecord(request.postgres, request.payload, function (err, result) {
+            if (err) {
+                Respond.failedToCreateTimeRecord(reply, err);
+            } else {
+                Respond.createTimeRecord(reply, result);
+            }
+        });
+    },
+
+    editTimeRecord: function (request, reply) {
+        Service.editTimeRecord(request.postgres, request.payload, function (err, result) {
+            if (err) {
+                Respond.failedToEditTimeRecord(reply, err);
+            } else {
+                Respond.editTimeRecord(reply, result);
+            }
+        });
+    },
+
+    deleteTimeRecord: function (request, reply) {
+        Service.deleteTimeRecord(request.postgres, request.params.recordID, function (err, result) {
+            if (err) {
+                Respond.failedToDeleteTimeRecord(reply, err);
+            } else {
+                Respond.deleteTimeRecord(reply, result);
+            }
+        });
+    },
+
     uploadFile: function (request, reply) {
         Service.uploadFile(request.postgres, request.payload, function (err, result) {
             if (err) {

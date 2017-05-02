@@ -337,6 +337,48 @@ var respond = {
             result: result
         }).code(200);
     },
+    failedToCreateTimeRecord: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to create time record!",
+            error: err
+        }).code(500);
+    },
+    createTimeRecord: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully created time record!",
+            result: result
+        }).code(200);
+    },
+    failedToEditTimeRecord: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to edit time record!",
+            error: err
+        }).code(500);
+    },
+    editTimeRecord: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully edited time record!",
+            result: result
+        }).code(200);
+    },
+    failedToDeleteTimeRecord: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to delete time record!",
+            error: err
+        }).code(500);
+    },
+    deleteTimeRecord: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully deleted time record!",
+            result: result
+        }).code(200);
+    },
     failedToUploadFile: function (reply, err) {
         reply({
             statusCode: 500,

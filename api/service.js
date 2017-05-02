@@ -235,6 +235,33 @@ var service = {
         });
     },
 
+    createTimeRecord: function (postgres, payload, callback) {
+        Query.createTimeRecord(postgres, payload, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    editTimeRecord: function (postgres, payload, callback) {
+        Query.editTimeRecord(postgres, payload, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    deleteTimeRecord: function (postgres, recordID, callback) {
+        Query.deleteTimeRecord(postgres, recordID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     uploadFile: function (postgres, payload, callback) {
         Query.uploadFile(postgres, payload, function (err, result) {
             if (err) {

@@ -138,4 +138,7 @@ $(function (event) {
 
 	getTimeRecords(table);
 
+    $("#time-record-date").datepicker();
+    $('#time-record-time').timepicker();
+
 });

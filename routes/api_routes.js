@@ -155,6 +155,21 @@ var apiRoutes = [
     },
     {
         method: 'POST',
+        path: '/timerecord/create',
+        handler: Api.createTimeRecord
+    },
+    {
+        method: 'POST',
+        path: '/timerecord/edit',
+        handler: Api.editTimeRecord
+    },
+    {
+        method: 'POST',
+        path: '/timerecord/delete/{cardID}',
+        handler: Api.deleteTimeRecord
+    },
+    {
+        method: 'POST',
         path: '/files',
         config: {
             payload: {
