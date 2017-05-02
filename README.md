@@ -4,7 +4,7 @@
 
 [Read the Requirements Specification](Deliverables/software-requirements-specifications.md)
 
-[Read the Detailed Design Document](Deliverabless/detailed-design-description.md)
+[Read the Detailed Design Document](Deliverables/detailed-design-description.md)
 
 ### Requirements
 Install `npm` and `postgres` if you don't already have them installed
