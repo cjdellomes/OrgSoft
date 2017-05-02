@@ -110,7 +110,8 @@ $(function (event) {
                 table.rows().remove().draw();
 
                 rows.forEach(function (row) {
-                	var date = row.date.getMonth() + 1 + "/" + row.date.getDate() + "/" + row.date.getFullYear();
+                    var date = new Date(row.date);
+                	date = date.getMonth() + 1 + "/" + date.getDate() + "/" + date.getFullYear();
 
                 	var row = table.row.add([
                 		row.id,

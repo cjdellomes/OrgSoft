@@ -12,7 +12,7 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<a href="timecard-details"><button type="button" class="btn btn-primary">History</button></a>'
+				defaultContent: '<a href="timecard-details"><button type="button" class="btn btn-primary">Details</button></a>'
 			} ]
 		});
 

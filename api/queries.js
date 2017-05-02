@@ -174,6 +174,8 @@ var queries = {
     getTimeRecords: function (timecardID) {
         var queryString = 'SELECT time_record.id, date, time, type FROM time_record LEFT JOIN timecard ON timecard.id = time_record.timecard_id WHERE timecard.id = ' + timecardID;
 
+        console.log(queryString);
+
         return queryString;
     },
 

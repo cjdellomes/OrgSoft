@@ -150,7 +150,7 @@ var apiRoutes = [
     },
     {
         method: 'GET',
-        path: '/timerecord/{userID}',
+        path: '/timerecord/{timecardID}',
         handler: Api.getTimeRecords
     },
     {
