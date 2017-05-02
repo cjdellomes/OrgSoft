@@ -165,7 +165,7 @@ var apiRoutes = [
     },
     {
         method: 'POST',
-        path: '/timerecord/delete/{cardID}',
+        path: '/timerecord/delete/{recordID}',
         handler: Api.deleteTimeRecord
     },
     {

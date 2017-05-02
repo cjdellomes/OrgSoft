@@ -174,16 +174,14 @@ var queries = {
     getTimeRecords: function (timecardID) {
         var queryString = 'SELECT time_record.id, date, time, type FROM time_record LEFT JOIN timecard ON timecard.id = time_record.timecard_id WHERE timecard.id = ' + timecardID;
 
-        console.log(queryString);
-
         return queryString;
     },
 
     createTimeRecord: function (payload) {
         var queryString = 'INSERT INTO time_record (timecard_id, date, time, type) VALUES (\'' +
-                            payload.timecardID + '\' \'' +
-                            payload.date + '\ \'' +
-                            payload.time + '\ \'' +
+                            payload.timecardID + '\', \'' +
+                            payload.date + '\, \'' +
+                            payload.time + '\, \'' +
                             payload.type + '\');';
 
         return queryString;
@@ -191,9 +189,9 @@ var queries = {
 
     editTimeRecord: function (payload) {
         var queryString = 'UPDATE time_record SET timecard_id = \'' + payload.timecardID +
-                            '\' date = \'' + payload.date +
-                            '\' time = \'' + payload.time +
-                            '\' type = \'' + payload.type +
+                            '\', date = \'' + payload.date +
+                            '\', time = \'' + payload.time +
+                            '\', type = \'' + payload.type +
                             '\' WHERE id = ' + payload.id + ';';
 
         return queryString;
@@ -248,7 +246,6 @@ var queries = {
                                 payload.daysUntilReview + '\', \'' +
                                 payload.status + '\');';
 
-        console.log(queryString);
         return queryString;
     },
 
@@ -265,8 +262,6 @@ var queries = {
                             '\', days_until_review = \'' + payload.daysUntilReview +
                             '\', status = \'' + payload.status +
                             '\' WHERE id = ' + payload.id + ';';
-
-        console.log(queryString);
 
         return queryString;
     },

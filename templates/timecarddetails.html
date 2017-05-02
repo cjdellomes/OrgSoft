@@ -17,7 +17,7 @@
         	</div>
         	<div class="modal-body">
             	<div class="row">
-            		<div id='timecard-id' hidden></div>
+            		<div id='time-record-id' hidden></div>
             		<div class="form-group">
             		    <label class="control-label col-md-2">Date</label>
             		    <div class="col-md-4">
@@ -34,16 +34,17 @@
         		<div class="row">
         			<div class="form-group">
             			<label class="control-label col-md-2"> Record Type</label>
-            			<div class="col-md-4">
-			            	<select id="file-type" class="col-md-3">
+            			<div class="col-md-6">
+			            	<select id="time-record-type" class="col-md-5">
+			            		<option value=''>Select Type</option>
 			                	<option value="In">In</option>
 				                <option value="Meal Out">Meal Out</option>
 				                <option value="Meal In">Meal In</option>
 				                <option value="Out">Out</option>
 				                <option value="Sick In">Sick In</option>
 				                <option value="Sick Out">Sick Out</option>
-				                <option value="Vacation In">Sick In</option>
-				                <option value="Vacation Out">Sick Out</option>
+				                <option value="Vacation In">Vacation In</option>
+				                <option value="Vacation Out">Vacation Out</option>
 				            </select>
         				</div>
             		</div>
@@ -110,7 +111,6 @@
   <link rel="stylesheet" href="https://code.jquery.com/ui/1.12.0/themes/base/jquery-ui.css">
 
   <script type="text/javascript" src="~/Scripts/jquery-ui-1.12.1.min.js"></script>
-  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jquery-ui-timepicker-addon/1.6.3/i18n/jquery-ui-timepicker-addon-i18n.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
   <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
@@ -122,5 +122,5 @@
   <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
 
   <script type="text/babel" src="static/js/timecarddetails.js"></script>
-
+  <script type="text/babel" src="static/js/topbutton.js"></script>
 {% include "components/_footer.html" %}
