@@ -1,0 +1,75 @@
+{% include "components/_header.html" %}
+
+{% include "components/_navbar.html" %}
+
+<br>
+<h2>Reviews</h2>
+<br>
+<div class="card">
+	<div class="card-header">
+		<div class="row">
+			<div class="col-md-8" id="dt-search"></div>
+			<div class="col-md-3">
+			    <select class="form-control-sm input" id="export">
+			        <option value="">Export Format</option>
+			        <option value="copy">Copy</option>
+			        <option value="csv">CSV</option>
+			        <option value="excel">Excel</option>
+			        <option value="pdf">PDF</option>
+			        <option value="print">Print</option>
+			    </select>
+			</div>
+			<div class="col-md-1" id="dt-buttons"></div>
+		</div>
+	</div>
+	<table class="table table-bordered table-responsive table-condensed" id="Table" name="Table" style="display:none">
+		<thead id="TableHeader" name="TableHeader">
+			<tr>
+				<th class="table-sort sorting">
+			        <input type="text" placeholder="ID" size="6">
+			        <p hidden>ID</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="FLSA" size="4">
+			        <p hidden>FLSA</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="Employee" size="10">
+			        <p hidden>Employee</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="Supervisor" size="11">
+			        <p hidden>Supervisor</p>
+			    </th>
+			    <th class="table-sort sorting">
+			        <input type="text" placeholder="Is Admin" size="7">
+			        <p hidden>Is Admin</p>
+			    </th>
+			    <th>Options</th>
+			</tr>
+		</thead>
+		<tbody>
+		</tbody>
+	</table>
+	<div id="Top">
+	    <a href="#" class="btn btn-primary">To Top</a>
+	</div>
+</div>
+
+{% include "components/_basescript.html" %}
+  <link rel="stylesheet" type="text/css" href="https://cdn.datatables.net/buttons/1.2.2/css/buttons.dataTables.min.css" />
+  <link rel="stylesheet" type="text/css" href="static/css/format.css" />
+
+  <script type="text/javascript" src="https://cdn.datatables.net/fixedheader/3.1.2/js/dataTables.fixedHeader.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/dataTables.buttons.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.flash.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.html5.min.js"></script>
+  <script type="text/javascript" src="https://cdn.datatables.net/buttons/1.2.2/js/buttons.print.min.js"></script>
+
+  <script type="text/javascript" src="https://cdnjs.cloudflare.com/ajax/libs/jszip/2.5.0/jszip.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/pdfmake.min.js"></script>
+  <script type="text/javascript" src="https://cdn.rawgit.com/bpampuch/pdfmake/0.1.18/build/vfs_fonts.js"></script>
+
+  <script type="text/babel" src="static/js/employeedash.js"></script>
+  <script type="text/babel" src="static/js/topbutton.js"></script>
+{% include "components/_footer.html" %}

@@ -115,6 +115,19 @@ var viewRoutes = [
             });
         }
     },
+
+    {
+        path: '/employee',
+        method: 'GET',
+        config: {
+            auth: false
+        },
+        handler: function (req, res) {
+            res.view('employeedash.html', {
+                
+            });
+        }
+    },
 ];
 
 module.exports = viewRoutes;
