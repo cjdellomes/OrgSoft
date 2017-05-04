@@ -311,9 +311,9 @@ $(function (event) {
         };
 
         if ($('#time-record-id').text() == '') {
-            //createTimeRecord(data);
+            createTimeRecord(data);
         } else {
-            //editTimeRecord(data);
+            editTimeRecord(data);
         }
     });
 

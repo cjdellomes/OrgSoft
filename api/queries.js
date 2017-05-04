@@ -180,8 +180,8 @@ var queries = {
     createTimeRecord: function (payload) {
         var queryString = 'INSERT INTO time_record (timecard_id, date, time, type) VALUES (\'' +
                             payload.timecardID + '\', \'' +
-                            payload.date + '\, \'' +
-                            payload.time + '\, \'' +
+                            payload.date + '\', \'' +
+                            payload.time + '\', \'' +
                             payload.type + '\');';
 
         return queryString;
