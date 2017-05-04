@@ -12,7 +12,8 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<div class="col-xs-1"><a><span title="Edit Time Record"><i class="fa fa-pencil-square-o fa-2x edit-time-record"></i></span></a></div><div class="col-xs-1"><a><span title="Delete Time Record"><i class="fa fa-trash-o fa-2x delete-time-record"></i></span></a></div>'
+				defaultContent: `<div class="col-xs-1"><a><span title="Edit Time Record"><i class="fa fa-pencil-square-o fa-2x edit-time-record"></i></span></a></div>
+                <div class="col-xs-1"><a><span title="Delete Time Record"><i class="fa fa-trash-o fa-2x delete-time-record"></i></span></a></div>`
 			} ]
 		});
 

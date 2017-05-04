@@ -158,11 +158,13 @@ var queries = {
 
     editTimecard: function (payload) {
         var queryString = 'UPDATE timecard SET user_id = \'' + payload.userID +
-                            '\' start_date = \'' + payload.startDate +
-                            '\' end_date = \'' + payload.endDate +
-                            '\' employee_signed = \'' + payload.employeeSigned +
-                            '\' admin_signed = \'' + payload.adminSigned +
+                            '\', start_date = \'' + payload.startDate +
+                            '\', end_date = \'' + payload.endDate +
+                            '\', employee_signed = \'' + payload.employeeSigned +
+                            '\', admin_signed = \'' + payload.adminSigned +
                             '\' WHERE id = ' + payload.id + ';';
+
+        console.log(queryString);
 
         return queryString;
     },

@@ -12,7 +12,9 @@ $(function (event) {
 			columnDefs: [ {
 				targets: -1,
 				data: null,
-				defaultContent: '<a href="timecard-details"><button type="button" class="btn btn-primary">Details</button></a>'
+				defaultContent: `<div class="col-xs-1"><a href="timecard-details"><span title="Timecard Details"><i class="fa fa-info-circle fa-2x details-timecard"></i></span></a></div>
+                <div class="col-xs-1"><a><span title="Edit Timecard"><i class="fa fa-pencil-square-o fa-2x edit-timecard"></i></span></a></div>
+                <div class="col-xs-1"><a><span title="Delete Timecard"><i class="fa fa-trash-o fa-2x delete-timecard"></i></span></a></div>`
 			} ]
 		});
 
@@ -191,6 +193,109 @@ $(function (event) {
         });
     }
 
+    var editTimecard = function (data) {
+        console.log(data);
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/timecard/edit',
+            method: 'POST',
+            data: data,
+            success: function (data) {
+                console.log(data);
+
+                if (!$.fn.DataTable.isDataTable('#Table')) {
+                    table = $('#Table').DataTable({
+                        initComplete: function (settings, json) {
+                            $("#Table").show();
+                        },
+                        paging: false,
+                        dom: "Bfrtip",
+                        buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+                    });
+                } else {
+                    table = $('#Table').DataTable();
+                }
+
+                table.rows().remove().draw();
+
+                getUser(localStorage.getItem('userID'), table);
+
+                $('#add-timecard-modal').modal('hide');
+                $('#timecard-id').html('');
+                $('#timecard-user').val(''),
+                $('#timecard-start-date').val('');
+                $('#timecard-end-date').val('');
+                $('#timecard-eployee-signed').val('false');
+                $('#timecard-admin-signed').val('false');
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
+    var deleteTimecard = function (timecardID) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/timecard/delete/' + timecardID,
+            method: 'POST',
+            success: function (data) {
+                console.log(data);
+
+                if (!$.fn.DataTable.isDataTable('#Table')) {
+                    table = $('#Table').DataTable({
+                        initComplete: function (settings, json) {
+                            $("#Table").show();
+                        },
+                        paging: false,
+                        dom: "Bfrtip",
+                        buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+                    });
+                } else {
+                    table = $('#Table').DataTable();
+                }
+
+                table.rows().remove().draw();
+
+                getUser(localStorage.getItem('userID'), table);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
+    var populateModal = function (data) {
+        $('#timecard-id').html(data.id);
+        $('#timecard-user').val(data.userID),
+        $('#timecard-start-date').val(data.startDate);
+        $('#timecard-end-date').val(data.endDate);
+        $('#timecard-employee-signed').val(data.employeeSigned);
+        $('#timecard-admin-signed').val(data.adminSigned);
+    }
+
 	var table = initiateDataTable();
 
 	getUser(localStorage.getItem('userID'), table);
@@ -200,9 +305,27 @@ $(function (event) {
         localStorage.setItem("timecardID", data[0]);
     } );
 
+    table.on( 'click', 'i', function () {
+        var data = table.row( $(this).parents('tr') ).data();
+        if ($(this).hasClass('delete-timecard')) {
+            deleteTimecard(data[0])
+        } else if ($(this).hasClass('edit-timecard')) {
+            var data = {
+                id: data[0],
+                userID: data[1],
+                startDate: data[2],
+                endDate: data[3],
+                employeeSigned: '' + data[4],
+                adminSigned: '' + data[5]
+            };
+            populateModal(data);
+            $('#add-timecard-modal').modal('show');
+        }
+    } );
+
     $('#add-timecard-modal').on('hidden.bs.modal', function () {
         $('#timecard-id').html('');
-        $('#timecard-user').val(),
+        $('#timecard-user').val(''),
         $('#timecard-start-date').val('');
         $('#timecard-end-date').val('');
         $('#timecard-eployee-signed').val('false');
@@ -215,12 +338,13 @@ $(function (event) {
 
     $('#cancel-timecard').click(function () {
         $('#timecard-id').html('');
+        $('#timecard-user').val(''),
         $('#add-timecard-modal').modal('hide');
     });
 
     $('#submit-timecard').click(function () {
         var data = {
-            id: $('#timecard-id').val(),
+            id: $('#timecard-id').text(),
             userID: $('#timecard-user').val(),
             startDate: $('#timecard-start-date').val(),
             endDate: $('#timecard-end-date').val(),
