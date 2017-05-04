@@ -5,6 +5,66 @@
 <br>
 <h2>Timecards</h2>
 <br>
+<div><button id="add-timecard-button" class="btn btn-success" data-toggle="modal" data-target="#add-timecard-modal">Add New Timecard <i class="fa fa-plus" aria-hidden="true"></i></button></div>
+<div class="modal fade" id="add-timecard-modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        	<div class="modal-header">
+            	Add Timecard
+        	</div>
+        	<div class="modal-body">
+        		<div class="row">
+        			<div class="form-group">
+            		    <label class="control-label col-md-2">User ID</label>
+            		    <div class="col-md-4">
+            		        <input type="number" class="form-control" name="timecard-user" id="timecard-user" />
+            		    </div>
+            		</div>
+    			</div>
+            	<div class="row">
+            		<div id='time-card-id' hidden></div>
+            		<div class="form-group">
+            		    <label class="control-label col-md-2">Start Date</label>
+            		    <div class="col-md-4">
+            		        <input type="text" class="form-control" name="timecard-start-date" id="timecard-start-date" />
+            		    </div>
+            		</div>
+            		<div class="form-group">
+            		    <label class="control-label col-md-2">End Date</label>
+            		    <div class="col-md-4">
+            		        <input type="text" class="form-control" name="timecard-end-date" id="timecard-end-date" />
+            		    </div>
+            		</div>
+        		</div>
+        		<div class="row">
+        			<div class="form-group">
+            			<label class="control-label col-md-2"> Employee Signed</label>
+            			<div class="col-md-4">
+			            	<select id="timecard-employee-signed" class="col-md-5">
+			            		<option value="false">false</option>
+			                	<option value="true">true</option>
+				            </select>
+        				</div>
+            		</div>
+            		<div class="form-group">
+            			<label class="control-label col-md-2"> Admin Signed</label>
+            			<div class="col-md-4">
+			            	<select id="timecard-admin-signed" class="col-md-5">
+			            		<option value="false">false</option>
+			                	<option value="true">true</option>
+				            </select>
+        				</div>
+            		</div>
+    			</div>
+            	<br>
+
+        		<button class="btn btn-outline-primary" type="button" id="submit-timecard">Submit</button>
+        		<button class="btn btn-outline-secondary" type="button" id="cancel-timecard" style="float: right;">Cancel</button>
+    		</div>
+    	</div>
+	</div>
+</div>
+<br>
 <div class="card">
 	<div class="card-header">
 		<div class="row">

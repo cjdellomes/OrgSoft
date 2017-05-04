@@ -137,7 +137,59 @@ $(function (event) {
         }).done(function (data) {
 
         });
-	}
+    }
+
+    var createTimecard = function (data) {
+        console.log(data);
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/timecard/create',
+            method: 'POST',
+            data: data,
+            success: function (data) {
+                console.log(data);
+
+                if (!$.fn.DataTable.isDataTable('#Table')) {
+                    table = $('#Table').DataTable({
+                        initComplete: function (settings, json) {
+                            $("#Table").show();
+                        },
+                        paging: false,
+                        dom: "Bfrtip",
+                        buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+                    });
+                } else {
+                    table = $('#Table').DataTable();
+                }
+
+                table.rows().remove().draw();
+
+                getUser(localStorage.getItem('userID'), table);
+
+                $('#add-timecard-modal').modal('hide');
+                $('#timecard-id').html('');
+                $('#timecard-user').val(),
+                $('#timecard-start-date').val('');
+                $('#timecard-end-date').val('');
+                $('#timecard-eployee-signed').val('false');
+                $('#timecard-admin-signed').val('false');
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
 
 	var table = initiateDataTable();
 
@@ -147,5 +199,43 @@ $(function (event) {
         var data = table.row( $(this).parents('tr') ).data();
         localStorage.setItem("timecardID", data[0]);
     } );
+
+    $('#add-timecard-modal').on('hidden.bs.modal', function () {
+        $('#timecard-id').html('');
+        $('#timecard-user').val(),
+        $('#timecard-start-date').val('');
+        $('#timecard-end-date').val('');
+        $('#timecard-eployee-signed').val('false');
+        $('#timecard-admin-signed').val('false');
+    });
+
+    $('#add-timecard-button').click(function () {
+        $('#timecard-id').html('');
+    });
+
+    $('#cancel-timecard').click(function () {
+        $('#timecard-id').html('');
+        $('#add-timecard-modal').modal('hide');
+    });
+
+    $('#submit-timecard').click(function () {
+        var data = {
+            id: $('#timecard-id').val(),
+            userID: $('#timecard-user').val(),
+            startDate: $('#timecard-start-date').val(),
+            endDate: $('#timecard-end-date').val(),
+            employeeSigned: $('#timecard-employee-signed').val(),
+            adminSigned: $('#timecard-admin-signed').val()
+        };
+
+        if ($('#timecard-id').text() == '') {
+            createTimecard(data);
+        } else {
+            editTimecard(data);
+        }
+    });
+
+    $("#timecard-start-date").datepicker();
+    $("#timecard-end-date").datepicker();
 
 });

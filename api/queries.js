@@ -138,11 +138,13 @@ var queries = {
 
     createTimecard: function (payload) {
         var queryString = 'INSERT INTO timecard (user_id, start_Date, end_date, employee_signed, admin_signed) VALUES (\'' +
-                            payload.userID + '\' \'' +
-                            payload.startDate + '\ \'' +
-                            payload.endDate + '\ \'' +
-                            payload.employeeSigned + '\ \'' +
+                            payload.userID + '\', \'' +
+                            payload.startDate + '\', \'' +
+                            payload.endDate + '\', \'' +
+                            payload.employeeSigned + '\', \'' +
                             payload.adminSigned + '\');';
+
+        console.log(queryString);
 
         return queryString;
     },

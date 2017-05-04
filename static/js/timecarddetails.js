@@ -290,7 +290,7 @@ $(function (event) {
         $('#time-record-date').val('');
         $('#time-record-time').val('');
         $('#time-record-type').val('');
-    })
+    });
 
     $('#add-time-record-button').click(function () {
         $('#time-record-id').html('');
