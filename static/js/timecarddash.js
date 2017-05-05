@@ -300,11 +300,6 @@ $(function (event) {
 
 	getUser(localStorage.getItem('userID'), table);
 
-	table.on( 'click', 'button', function () {
-        var data = table.row( $(this).parents('tr') ).data();
-        localStorage.setItem("timecardID", data[0]);
-    } );
-
     table.on( 'click', 'i', function () {
         var data = table.row( $(this).parents('tr') ).data();
         if ($(this).hasClass('delete-timecard')) {
@@ -320,6 +315,8 @@ $(function (event) {
             };
             populateModal(data);
             $('#add-timecard-modal').modal('show');
+        } else {
+            localStorage.setItem("timecardID", data[0]);
         }
     } );
 

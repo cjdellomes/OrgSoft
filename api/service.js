@@ -208,6 +208,15 @@ var service = {
         });
     },
 
+    getUserTimecards: function (postgres, userID, callback) {
+        Query.getUserTimecards(postgres, userID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     createTimecard: function (postgres, payload, callback) {
         Query.createTimecard(postgres, payload, function (err, result) {
             if (err) {
@@ -244,6 +253,15 @@ var service = {
         });
     },
 
+    deleteTimecards: function (postgres, userID, callback) {
+        Query.deleteTimecards(postgres, userID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     getTimeRecords: function (postgres, timecardID, callback) {
         Query.getTimeRecords(postgres, timecardID, function (err, result) {
             if (err) {
@@ -273,6 +291,15 @@ var service = {
 
     deleteTimeRecord: function (postgres, recordID, callback) {
         Query.deleteTimeRecord(postgres, recordID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
+    deleteTimeRecords: function (postgres, cardID, callback) {
+        Query.deleteTimeRecords(postgres, cardID, function (err, result) {
             if (err) {
                 return callback(err);
             }

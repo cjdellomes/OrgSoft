@@ -139,6 +139,11 @@ var apiRoutes = [
         handler: Api.getTimecards
     },
     {
+        method: 'GET',
+        path: '/timecard/user/{userID}',
+        handler: Api.getUserTimecards
+    },
+    {
         method: 'POST',
         path: '/timecard/create',
         handler: Api.createTimecard
@@ -159,6 +164,11 @@ var apiRoutes = [
         handler: Api.deleteTimecard
     },
     {
+        method: 'POST',
+        path: '/timecard/delete/user/{userID}',
+        handler: Api.deleteTimecards
+    },
+    {
         method: 'GET',
         path: '/timerecord/{timecardID}',
         handler: Api.getTimeRecords
@@ -177,6 +187,11 @@ var apiRoutes = [
         method: 'POST',
         path: '/timerecord/delete/{recordID}',
         handler: Api.deleteTimeRecord
+    },
+    {
+        method: 'POST',
+        path: '/timerecord/delete/timecard/{cardID}',
+        handler: Api.deleteTimeRecords
     },
     {
         method: 'POST',

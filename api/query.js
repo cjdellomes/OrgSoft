@@ -286,6 +286,23 @@ var query = {
         });
     },
 
+    getUserTimecards: function (postgres, userID, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.getUserTimecards(userID), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
     createTimecard: function (postgres, payload, callback) {
         postgres.connect(function (err, client, done) {
             if (err) {
@@ -354,6 +371,23 @@ var query = {
         });
     },
 
+    deleteTimecards: function (postgres, userID, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.deleteTimecards(userID), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
     getTimeRecords: function (postgres, timecardID, callback) {
         postgres.connect(function (err, client, done) {
             if (err) {
@@ -412,6 +446,23 @@ var query = {
             }
 
             client.query(Queries.deleteTimeRecord(recordID), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
+    deleteTimeRecords: function (postgres, cardID, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.deleteTimeRecords(cardID), function (err, result) {
                 done();
                 if (err) {
                     return callback(err);

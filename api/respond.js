@@ -295,6 +295,20 @@ var respond = {
             result: result
         }).code(200);
     },
+    failedToGetUserTimecards: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get user timecards!",
+            error: err
+        }).code(500);
+    },
+    getUserTimecards: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got user timecards!",
+            result: result
+        }).code(200);
+    },
     failedToCreateTimecard: function (reply, err) {
         reply({
             statusCode: 500,
@@ -351,6 +365,20 @@ var respond = {
             result: result
         }).code(200);
     },
+    failedToDeleteTimecards: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to delete timecards!",
+            error: err
+        }).code(500);
+    },
+    deleteTimecards: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully deleted timecards!",
+            result: result
+        }).code(200);
+    },
     failedToGetTimeRecords: function (reply, err) {
         reply({
             statusCode: 500,
@@ -404,6 +432,20 @@ var respond = {
         reply({
             statusCode: 200,
             message: "Successfully deleted time record!",
+            result: result
+        }).code(200);
+    },
+    failedToDeleteTimeRecords: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to delete time records!",
+            error: err
+        }).code(500);
+    },
+    deleteTimeRecords: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully deleted time records!",
             result: result
         }).code(200);
     },

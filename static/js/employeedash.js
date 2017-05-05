@@ -282,6 +282,113 @@ $(function (event) {
         });
     }
 
+    var deleteTimecards = function (userID) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/timecard/delete/user/' + userID,
+            method: 'POST',
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
+    var deleteReviews = function (userID) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/review/delete/user/' + userID,
+            method: 'POST',
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
+    var deleteTimeRecords = function (timecardID) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/timerecord/delete/timecard/' + timecardID,
+            method: 'POST',
+            success: function (data) {
+                console.log(data);
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
+    var getTimecards = function (userID) {
+        $.ajax({
+            xhrFields: {
+                withCredentials: true
+            },
+            beforeSend: function (xhr) {
+                xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+            },
+            url: 'api/timecard/user/' + userID,
+            method: 'GET',
+            success: function (data) {
+                console.log(data);
+
+                var rows = data.result.rows;
+
+                rows.forEach(function (row) {
+                    deleteTimeRecords(row.id);
+                });
+
+            },
+            error: function (xhr) {
+                console.log(xhr);
+
+                if (xhr.status === 401) {
+                    localStorage.removeItem("authorization");
+                }
+            }
+        }).done(function (data) {
+
+        });
+    }
+
     var populateModal = function (data) {
         $('#employee-id').html(data.id);
         $('#employee-supervisor-id').val(data.supID),
@@ -303,7 +410,8 @@ $(function (event) {
     table.on( 'click', 'i', function () {
         var data = table.row( $(this).parents('tr') ).data();
         if ($(this).hasClass('delete-employee')) {
-            deleteUser(data[0])
+            getTimecards(data[0]);
+            //deleteUser(data[0])
         } else if ($(this).hasClass('edit-employee')) {
             var data = {
                 id: data[0],

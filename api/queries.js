@@ -154,6 +154,12 @@ var queries = {
         return queryString;
     },
 
+    getUserTimecards: function (userID) {
+        var queryString = 'SELECT id, user_id, start_date, end_date, employee_signed, admin_signed FROM timecard WHERE user_id = ' + userID;
+
+        return queryString;
+    },
+
     createTimecard: function (payload) {
         var queryString = 'INSERT INTO timecard (user_id, start_Date, end_date, employee_signed, admin_signed) VALUES (\'' +
                             payload.userID + '\', \'' +
@@ -193,6 +199,12 @@ var queries = {
         return queryString;
     },
 
+    deleteTimecards: function (userID) {
+        var queryString = 'DELETE FROM timecard WHERE user_id = ' + userID + ';';
+
+        return queryString;
+    },
+
     getTimeRecords: function (timecardID) {
         var queryString = 'SELECT time_record.id, date, time, type FROM time_record LEFT JOIN timecard ON timecard.id = time_record.timecard_id WHERE timecard.id = ' + timecardID;
 
@@ -221,6 +233,12 @@ var queries = {
 
     deleteTimeRecord: function (recordID) {
         var queryString = 'DELETE FROM time_record WHERE id = ' + recordID + ';';
+
+        return queryString;
+    },
+
+    deleteTimeRecords: function (cardID) {
+        var queryString = 'DELETE FROM time_record WHERE timecard_id = ' + cardID + ';';
 
         return queryString;
     },

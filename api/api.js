@@ -320,6 +320,16 @@ var api = {
         });
     },
 
+    getUserTimecards: function (request, reply) {
+        Service.getUserTimecards(request.postgres, request.params.userID, function (err, result) {
+            if (err) {
+                Respond.failedToGetUserTimecards(reply, err);
+            } else {
+                Respond.getUserTimecards(reply, result);
+            }
+        });
+    },
+
     createTimecard: function (request, reply) {
         Service.createTimecard(request.postgres, request.payload, function (err, result) {
             if (err) {
@@ -360,6 +370,16 @@ var api = {
         });
     },
 
+    deleteTimecards: function (request, reply) {
+        Service.deleteTimecards(request.postgres, request.params.userID, function (err, result) {
+            if (err) {
+                Respond.failedToDeleteTimecards(reply, err);
+            } else {
+                Respond.deleteTimecards(reply, result);
+            }
+        });
+    },
+
     getTimeRecords: function (request, reply) {
         Service.getTimeRecords(request.postgres, request.params.timecardID, function (err, result) {
             if (err) {
@@ -396,6 +416,16 @@ var api = {
                 Respond.failedToDeleteTimeRecord(reply, err);
             } else {
                 Respond.deleteTimeRecord(reply, result);
+            }
+        });
+    },
+
+    deleteTimeRecords: function (request, reply) {
+        Service.deleteTimeRecords(request.postgres, request.params.cardID, function (err, result) {
+            if (err) {
+                Respond.failedToDeleteTimeRecords(reply, err);
+            } else {
+                Respond.deleteTimeRecords(reply, result);
             }
         });
     },
