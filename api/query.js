@@ -252,6 +252,23 @@ var query = {
         });
     },
 
+    editUser: function (postgres, payload, callback) {
+        postgres.connect(function (err, client, done) {
+            if (err) {
+                return callback(err);
+            }
+
+            client.query(Queries.editUser(payload), function (err, result) {
+                done();
+                if (err) {
+                    return callback(err);
+                }
+
+                return callback(undefined, result);
+            });
+        });
+    },
+
     getTimecards: function (postgres, orgID, callback) {
         postgres.connect(function (err, client, done) {
             if (err) {

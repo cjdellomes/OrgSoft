@@ -340,15 +340,16 @@ $(function (event) {
 
     $('#submit-employee').click(function () {
         var data = {
-            id: $('#timecard-id').text(),
-            supID: $('#timecard-user').val(),
-            firstName: $('#timecard-start-date').val(),
-            lastName: $('#timecard-end-date').val(),
-            isAdmin: $('#timecard-employee-signed').val(),
-            flsa: $('#timecard-admin-signed').val()
+            id: $('#employee-id').text(),
+            supID: $('#employee-supervisor-id').val(),
+            firstName: $('#employee-first-name').val(),
+            lastName: $('#employee-last-name').val(),
+            displayName: $('#employee-first-name').val() + ' ' + $('#employee-last-name').val(),
+            isAdmin: $('#employee-is-admin').val(),
+            flsa: $('#employee-flsa').val()
         };
 
-        if ($('#timecard-id').text() == '') {
+        if ($('#employee-id').text() == '') {
             createUser(data);
         } else {
             editUser(data);

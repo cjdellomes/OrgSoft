@@ -300,6 +300,16 @@ var api = {
         });
     },
 
+    editUser: function (request, reply) {
+        Service.editUser(request.postgres, request.payload, function (err, result) {
+            if (err) {
+                Respond.failedToEditUser(reply, err);
+            } else {
+                Respond.editUser(reply, result);
+            }
+        });
+    },
+
     getTimecards: function (request, reply) {
         Service.getTimecards(request.postgres, request.params.orgID, function (err, result) {
             if (err) {

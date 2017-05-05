@@ -267,6 +267,20 @@ var respond = {
             result: result
         }).code(200);
     },
+    failedToEditUser: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to edit user!",
+            error: err
+        }).code(500);
+    },
+    editUser: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully edited user!",
+            result: result
+        }).code(200);
+    },
     failedToGetTimecards: function (reply, err) {
         reply({
             statusCode: 500,

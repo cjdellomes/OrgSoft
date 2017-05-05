@@ -88,7 +88,7 @@ var apiRoutes = [
         handler: Api.getUser
     },
     {
-        method: 'PUT',
+        method: 'POST',
         path: '/users/{userId}',
         handler: Api.updateUser
     },
@@ -127,6 +127,11 @@ var apiRoutes = [
         method: 'GET',
         path: '/users/dash/{orgID}',
         handler: Api.getUserDash
+    },
+    {
+        method: 'POST',
+        path: '/users/edit',
+        handler: Api.editUser
     },
     {
         method: 'GET',

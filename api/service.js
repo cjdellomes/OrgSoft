@@ -190,6 +190,15 @@ var service = {
         });
     },
 
+    editUser: function (postgres, payload, callback) {
+        Query.editUser(postgres, payload, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     getTimecards: function (postgres, orgID, callback) {
         Query.getTimecards(postgres, orgID, function (err, result) {
             if (err) {

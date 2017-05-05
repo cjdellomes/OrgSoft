@@ -136,6 +136,18 @@ var queries = {
         return queryString;
     },
 
+    editUser: function (payload) {
+        var queryString = 'UPDATE users SET sup_id = \'' + payload.supID +
+                            '\', first_name = \'' + payload.firstName +
+                            '\', last_name = \'' + payload.lastName +
+                            '\', display_name = \'' + payload.displayName +
+                            '\', is_admin = \'' + payload.isAdmin +
+                            '\', flsa = \'' + payload.flsa +
+                            '\' WHERE id = ' + payload.id + ';';
+
+        return queryString;
+    },
+
     getTimecards: function (orgID) {
         var queryString = 'SELECT timecard.id, user_id, start_date, end_date, employee_signed, admin_signed FROM timecard LEFT JOIN users ON timecard.user_id = users.id WHERE users.org_id = ' + orgID;
 
