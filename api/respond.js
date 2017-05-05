@@ -253,6 +253,20 @@ var respond = {
             result: result
         }).code(200);
     },
+    failedToGetUserDash: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to get user dashboard!",
+            error: err
+        }).code(500);
+    },
+    getUserDash: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully got user dashboard!",
+            result: result
+        }).code(200);
+    },
     failedToGetTimecards: function (reply, err) {
         reply({
             statusCode: 500,

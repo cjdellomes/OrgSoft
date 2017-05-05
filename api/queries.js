@@ -130,6 +130,12 @@ var queries = {
         return queryString;
     },
 
+    getUserDash: function (orgID) {
+        var queryString = 'SELECT id, sup_id, display_name, is_admin, flsa FROM users WHERE org_id = ' + orgID;
+
+        return queryString;
+    },
+
     getTimecards: function (orgID) {
         var queryString = 'SELECT timecard.id, user_id, start_date, end_date, employee_signed, admin_signed FROM timecard LEFT JOIN users ON timecard.user_id = users.id WHERE users.org_id = ' + orgID;
 

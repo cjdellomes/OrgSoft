@@ -119,9 +119,14 @@ var apiRoutes = [
         handler: Api.changeCurrentUserPassword
     },
     {
-        method: 'Delete',
+        method: 'POST',
         path: '/users/delete/{userId}',
         handler: Api.deleteUser
+    },
+    {
+        method: 'GET',
+        path: '/users/dash/{orgID}',
+        handler: Api.getUserDash
     },
     {
         method: 'GET',

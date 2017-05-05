@@ -181,6 +181,15 @@ var service = {
         Query.deleteUser(postgres, userId, callback);
     },
 
+    getUserDash: function (postgres, orgID, callback) {
+        Query.getUserDash(postgres, orgID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     getTimecards: function (postgres, orgID, callback) {
         Query.getTimecards(postgres, orgID, function (err, result) {
             if (err) {

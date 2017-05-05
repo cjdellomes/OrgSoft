@@ -3,7 +3,67 @@
 {% include "components/_navbar.html" %}
 
 <br>
-<h2>Reviews</h2>
+<h2>Employees</h2>
+<br>
+<div><button id="add-employee-button" class="btn btn-success" data-toggle="modal" data-target="#add-employee-modal">Add New Employee <i class="fa fa-plus" aria-hidden="true"></i></button></div>
+<div class="modal fade" id="add-employee-modal" tabindex="-1" role="dialog">
+	<div class="modal-dialog modal-lg" role="document">
+        <div class="modal-content">
+        	<div class="modal-header">
+            	Add Employees
+        	</div>
+        	<div class="modal-body">
+        		<div class="row">
+        			<div id='employee-id' hidden></div>
+        			<div class="form-group">
+            		    <label class="control-label col-md-2">Supervisor ID</label>
+            		    <div class="col-md-4">
+            		        <input type="number" class="form-control" name="employee-supervisor-id" id="employee-supervisor-id" />
+            		    </div>
+            		</div>
+    			</div>
+            	<div class="row">
+            		<div class="form-group">
+            		    <label class="control-label col-md-2">First Name</label>
+            		    <div class="col-md-4">
+            		        <input type="text" class="form-control" name="employee-first-name" id="employee-first-name" />
+            		    </div>
+            		</div>
+            		<div class="form-group">
+            		    <label class="control-label col-md-2">Last Name</label>
+            		    <div class="col-md-4">
+            		        <input type="text" class="form-control" name="employee-last-name" id="employee-last-name" />
+            		    </div>
+            		</div>
+        		</div>
+        		<div class="row">
+        			<div class="form-group">
+            			<label class="control-label col-md-2"> Employee Is Admin</label>
+            			<div class="col-md-4">
+			            	<select id="employee-is-admin" class="col-md-5">
+			            		<option value="false">false</option>
+			                	<option value="true">true</option>
+				            </select>
+        				</div>
+            		</div>
+            		<div class="form-group">
+            			<label class="control-label col-md-2"> FLSA</label>
+            			<div class="col-md-4">
+			            	<select id="employee-flsa" class="col-md-5">
+			            		<option value="N">N</option>
+			                	<option value="E">E</option>
+				            </select>
+        				</div>
+            		</div>
+    			</div>
+            	<br>
+
+        		<button class="btn btn-outline-primary" type="button" id="submit-employee">Submit</button>
+        		<button class="btn btn-outline-secondary" type="button" id="cancel-employee" style="float: right;">Cancel</button>
+    		</div>
+    	</div>
+	</div>
+</div>
 <br>
 <div class="card">
 	<div class="card-header">
@@ -26,24 +86,24 @@
 		<thead id="TableHeader" name="TableHeader">
 			<tr>
 				<th class="table-sort sorting">
-			        <input type="text" placeholder="ID" size="6">
-			        <p hidden>ID</p>
+			        <input type="text" placeholder="User ID" size="11">
+			        <p hidden>User ID</p>
+			    </th>
+				<th class="table-sort sorting">
+			        <input type="text" placeholder="Supervisor ID" size="11">
+			        <p hidden>Supervisor ID</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="FLSA" size="4">
-			        <p hidden>FLSA</p>
-			    </th>
-			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Employee" size="10">
+			        <input type="text" placeholder="Employee" size="13">
 			        <p hidden>Employee</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Supervisor" size="11">
-			        <p hidden>Supervisor</p>
+			        <input type="text" placeholder="Is Admin" size="15">
+			        <p hidden>Is Admin</p>
 			    </th>
 			    <th class="table-sort sorting">
-			        <input type="text" placeholder="Is Admin" size="7">
-			        <p hidden>Is Admin</p>
+			        <input type="text" placeholder="FLSA" size="12">
+			        <p hidden>FLSA</p>
 			    </th>
 			    <th>Options</th>
 			</tr>

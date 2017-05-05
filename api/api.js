@@ -290,6 +290,16 @@ var api = {
         });
     },
 
+    getUserDash: function (request, reply) {
+        Service.getUserDash(request.postgres, request.params.orgID, function (err, result) {
+            if (err) {
+                Respond.failedToGetUserDash(reply, err);
+            } else {
+                Respond.getUserDash(reply, result);
+            }
+        });
+    },
+
     getTimecards: function (request, reply) {
         Service.getTimecards(request.postgres, request.params.orgID, function (err, result) {
             if (err) {
