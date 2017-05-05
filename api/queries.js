@@ -93,13 +93,19 @@ var queries = {
     },
 
     createUser: function (payload) {
-        var queryString = 'INSERT INTO users (username, hashed_password, org_id, sup_id, first_name, last_name, display_name, is_admin) VALUES (\'' +
+        console.log(payload);
+        var queryString = 'INSERT INTO users (username, hashed_password, org_id, sup_id, first_name, last_name, display_name, is_admin, flsa) VALUES (\'' +
                             payload.username + '\', \'' +
                             payload.password + '\', ' +
-                            payload.orgID + ', null, \'' +
+                            payload.orgID + ', ' +
+                            payload.supID + ', \'' + 
                             payload.firstName + '\', \'' +
                             payload.lastName + '\', \'' +
-                            payload.firstName + ' ' + payload.lastName + '\', ' + 'true);';
+                            payload.firstName + ' ' + payload.lastName + '\', \'' +
+                            payload.isAdmin + '\', \'' +
+                            payload.flsa + '\');';
+
+        console.log(queryString);
 
         return queryString;
     },

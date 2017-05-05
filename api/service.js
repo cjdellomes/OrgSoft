@@ -120,8 +120,12 @@ var service = {
                 username: payload.username,
                 password: hash,
                 orgID: payload.orgID,
+                supID: payload.supID,
                 firstName: payload.firstName,
-                lastName: payload.lastName
+                lastName: payload.lastName,
+                displayName: payload.displayName,
+                isAdmin: payload.isAdmin,
+                flsa: payload.flsa
             }, callback);
         });
     },

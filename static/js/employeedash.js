@@ -136,8 +136,7 @@ $(function (event) {
         });
     }
 
-    var createUser = function (data) {
-        console.log(data);
+    var createUser = function (userID, payload) {
         $.ajax({
             xhrFields: {
                 withCredentials: true
@@ -145,36 +144,65 @@ $(function (event) {
             beforeSend: function (xhr) {
                 xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
             },
-            url: 'api/users/create',
-            method: 'POST',
-            data: data,
+            url: 'api/users/get/' + userID,
+            method: 'GET',
             success: function (data) {
                 console.log(data);
 
-                if (!$.fn.DataTable.isDataTable('#Table')) {
-                    table = $('#Table').DataTable({
-                        initComplete: function (settings, json) {
-                            $("#Table").show();
-                        },
-                        paging: false,
-                        dom: "Bfrtip",
-                        buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
-                    });
-                } else {
-                    table = $('#Table').DataTable();
-                }
+                var orgID = data.result.rows[0].org_id
+                payload.orgID = orgID;
+                console.log(payload);
+                $.ajax({
+                    xhrFields: {
+                        withCredentials: true
+                    },
+                    beforeSend: function (xhr) {
+                        xhr.setRequestHeader('Authorization', localStorage.getItem("authorization"));
+                    },
+                    url: 'api/users',
+                    method: 'POST',
+                    data: payload,
+                    success: function (data) {
+                        console.log(data);
 
-                table.rows().remove().draw();
+                        if (!$.fn.DataTable.isDataTable('#Table')) {
+                            table = $('#Table').DataTable({
+                                initComplete: function (settings, json) {
+                                    $("#Table").show();
+                                },
+                                paging: false,
+                                dom: "Bfrtip",
+                                buttons: ['copy', 'excel', 'pdf', 'csv', 'print']
+                            });
+                        } else {
+                            table = $('#Table').DataTable();
+                        }
 
-                getUser(localStorage.getItem('userID'), table);
+                        table.rows().remove().draw();
 
-                $('#add-employee-modal').modal('hide');
-                $('#employee-id').html('');
-                $('#employee-supervisor-id').val(0),
-                $('#employee-first-name').val('');
-                $('#employee-last-name').val('');
-                $('#employee-is-admin').val('false');
-                $('#employee-flsa').val('N');
+                        getUser(localStorage.getItem('userID'), table);
+
+                        $('#add-employee-modal').modal('hide');
+                        $('#employee-login-username').val('');
+                        $('#employee-login-password').val('');
+                        $('#employee-login-confirm-password').val(''),
+                        $('#employee-id').html('');
+                        $('#employee-supervisor-id').val(0),
+                        $('#employee-first-name').val('');
+                        $('#employee-last-name').val('');
+                        $('#employee-is-admin').val('false');
+                        $('#employee-flsa').val('N');
+                    },
+                    error: function (xhr) {
+                        console.log(xhr);
+
+                        if (xhr.status === 401) {
+                            localStorage.removeItem("authorization");
+                        }
+                    }
+                }).done(function (data) {
+
+                });
             },
             error: function (xhr) {
                 console.log(xhr);
@@ -189,7 +217,6 @@ $(function (event) {
     }
 
     var editUser = function (data) {
-        console.log(data);
         $.ajax({
             xhrFields: {
                 withCredentials: true
@@ -221,6 +248,9 @@ $(function (event) {
                 getUser(localStorage.getItem('userID'), table);
 
                 $('#add-employee-modal').modal('hide');
+                $('#employee-login-username').val('');
+                $('#employee-login-password').val('');
+                $('#employee-login-confirm-password').val(''),
                 $('#employee-id').html('');
                 $('#employee-supervisor-id').val(0),
                 $('#employee-first-name').val('');
@@ -425,11 +455,20 @@ $(function (event) {
             };
             populateModal(data);
             $('#add-employee-modal').modal('show');
+            $('#employee-login-username').hide();
+            $('#employee-login-password').hide();
+            $('#employee-login-confirm-password').hide();
         }
     } );
 
     $('#add-employee-modal').on('hidden.bs.modal', function () {
         $('#add-employee-modal').modal('hide');
+        $('#employee-login-username').hide();
+        $('#employee-login-password').hide();
+        $('#employee-login-confirm-password').hide(),
+        $('#employee-username').val('');
+        $('#employee-password').val('');
+        $('#employee-confirm-password').val('');
         $('#employee-id').html('');
         $('#employee-supervisor-id').val(0),
         $('#employee-first-name').val('');
@@ -440,17 +479,26 @@ $(function (event) {
 
     $('#add-employee-button').click(function () {
         $('#employee-id').html('');
+        $('#employee-login-username').show();
+        $('#employee-login-password').show();
+        $('#employee-login-confirm-password').show();
     });
 
     $('#cancel-employee').click(function () {
         $('#employee-id').html('');
-        $('#employee-supervisor-id').val(0),
+        $('#employee-login-username').val('');
+        $('#employee-login-password').val('');
+        $('#employee-login-confirm-password').val('');
+        $('#employee-supervisor-id').val(0);
         $('#add-employee-modal').modal('hide');
     });
 
     $('#submit-employee').click(function () {
         var data = {
             id: $('#employee-id').text(),
+            username: $('#employee-username').val(),
+            password: $('#employee-password').val(),
+            confirmPassword: $('#employee-confirm-password').val(),
             supID: $('#employee-supervisor-id').val(),
             firstName: $('#employee-first-name').val(),
             lastName: $('#employee-last-name').val(),
@@ -460,7 +508,10 @@ $(function (event) {
         };
 
         if ($('#employee-id').text() == '') {
-            createUser(data);
+            if (data.password == data.confirmPassword) {
+                console.log(data);
+                createUser(localStorage.getItem('userID'), data);
+            }
         } else {
             editUser(data);
         }

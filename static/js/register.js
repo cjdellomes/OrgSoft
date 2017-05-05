@@ -88,7 +88,11 @@ $(function (event) {
 			password: password,
 			confirmPassword: confirmPassword,
 			firstName: firstName,
-			lastName: lastName
+			lastName: lastName,
+            displayName: firstName + ' ' + lastName,
+            supID: 'null',
+            isAdmin: true,
+            flsa: 'E'
 		};
 		
 		if (userData.password === userData.confirmPassword) {
