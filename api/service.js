@@ -388,6 +388,15 @@ var service = {
         });
     },
 
+    deleteReviews: function (postgres, userID, callback) {
+        Query.deleteReviews(postgres, userID, function (err, result) {
+            if (err) {
+                return callback(err);
+            }
+            callback(undefined, result);
+        });
+    },
+
     getReviewDash: function (postgres, orgID, callback) {
         Query.getReviewDash(postgres, orgID, function (err, result) {
             if (err) {

@@ -530,6 +530,16 @@ var api = {
         });
     },
 
+    deleteReviews: function (request, reply) {
+        Service.deleteReviews(request.postgres, request.params.userID, function (err, result) {
+            if (err) {
+                Respond.failedToDeleteReviews(reply, err);
+            } else {
+                Respond.deleteReviews(reply, result);
+            }
+        });
+    },
+
     getReviewDash: function (request, reply) {
         Service.getReviewDash(request.postgres, request.params.orgID, function (err, result) {
             if (err) {

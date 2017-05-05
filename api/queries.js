@@ -312,6 +312,12 @@ var queries = {
         return queryString;
     },
 
+    deleteReviews: function (userID) {
+        var queryString = 'DELETE from review WHERE user_id = ' + userID + ';';
+
+        return queryString;
+    },
+
     getReviewDash: function (orgID) {
         var queryString = `WITH CTE1 AS 
             (SELECT a.id, a.flsa, a.display_name AS display_name, b.display_name AS supervisor, MAX(date) AS date, MAX(next_review_date) as next_review_date, status, MAX(days_until_review) AS days_until_review 

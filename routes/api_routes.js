@@ -246,6 +246,11 @@ var apiRoutes = [
         handler: Api.deleteReview
     },
     {
+        method: 'POST',
+        path: '/review/delete/user/{userID}',
+        handler: Api.deleteReviews
+    },
+    {
         method: 'GET',
         path: '/review/dash/{orgID}',
         handler: Api.getReviewDash

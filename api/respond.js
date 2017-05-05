@@ -571,7 +571,21 @@ var respond = {
     deleteReview: function (reply, result) {
         reply({
             statusCode: 200,
-            message: "Successfully delted review",
+            message: "Successfully deleted review",
+            result: result
+        }).code(200);
+    },
+    failedToDeleteReviews: function (reply, err) {
+        reply({
+            statusCode: 500,
+            message: "Unable to delete reviews",
+            error: err
+        }).code(500);
+    },
+    deleteReviews: function (reply, result) {
+        reply({
+            statusCode: 200,
+            message: "Successfully deleted reviews",
             result: result
         }).code(200);
     },

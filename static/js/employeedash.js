@@ -411,7 +411,9 @@ $(function (event) {
         var data = table.row( $(this).parents('tr') ).data();
         if ($(this).hasClass('delete-employee')) {
             getTimecards(data[0]);
-            //deleteUser(data[0])
+            deleteTimecards(data[0]);
+            deleteReviews(data[0]);
+            deleteUser(data[0])
         } else if ($(this).hasClass('edit-employee')) {
             var data = {
                 id: data[0],
